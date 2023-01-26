@@ -2,6 +2,9 @@
 
 namespace CompetitionService.BusinessLogic.Models.Competitions
 {
+    /// <summary>
+    /// competition base entity
+    /// </summary>
     public class CompetitionBase
     {
         public CompetitionBase()
