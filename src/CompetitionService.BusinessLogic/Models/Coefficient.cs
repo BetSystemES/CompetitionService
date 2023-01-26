@@ -6,7 +6,9 @@ namespace CompetitionService.BusinessLogic.Models
     {
         public Guid Id { get; set; }
 
-        public Guid CoefficientGroupIds { get; set; }
+        public Guid CoefficientGroupId { get; set; }
+
+        public CoefficientGroup CoefficientGroup { get; set; }
 
         public string Description { get; set; }
 

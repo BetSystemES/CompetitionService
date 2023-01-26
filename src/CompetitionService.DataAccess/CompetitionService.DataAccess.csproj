@@ -20,4 +20,8 @@
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="7.0.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\CompetitionService.BusinessLogic\CompetitionService.BusinessLogic.csproj" />
+  </ItemGroup>
+
 </Project>

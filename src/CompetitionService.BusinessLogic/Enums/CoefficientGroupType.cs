@@ -1,4 +1,4 @@
-﻿namespace BetService.BusinessLogic.Enums
+﻿namespace CompetitionService.BusinessLogic.Enums
 {
     public enum CoefficientGroupType
     {

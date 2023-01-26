@@ -1,6 +1,6 @@
 ﻿namespace CompetitionService.BusinessLogic.Models.Competitions
 {
-    public class CompetitionDota2 : CompetitionBase
+    public class CompetitionDota2
     {
         public CompetitionDota2()
         {
@@ -9,6 +9,8 @@
         public Guid Id { get; set; }
 
         public Guid CompetitionBaseId { get; set; }
+
+        public CompetitionBase CompetitionBase { get; set; }
 
         public Guid Team1Id { get; set; }
 

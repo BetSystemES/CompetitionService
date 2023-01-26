@@ -6,7 +6,6 @@ namespace CompetitionService.BusinessLogic.Models.Competitions
     {
         public CompetitionBase()
         {
-            CoefficientGroupIds = Array.Empty<Guid>();
         }
 
         public Guid Id { get; set; }
@@ -17,6 +16,6 @@ namespace CompetitionService.BusinessLogic.Models.Competitions
 
         public DateTime StartTime { get; set; }
 
-        public Guid[] CoefficientGroupIds { get; set; }
+        public List<CoefficientGroup> CoefficientGroups { get; set; }
     }
 }
