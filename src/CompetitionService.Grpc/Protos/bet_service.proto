@@ -1,0 +1,143 @@
+syntax = "proto3";
+
+package betserivce;
+
+import "google/protobuf/timestamp.proto";
+
+option csharp_namespace = "CompetitionSerivce.Grpc";
+
+service CompetitionSerivce {
+  rpc CreateCompetitionDota2 (CreateCompetitionDota2Request)
+    returns (CreateCompetitionDota2Response);
+  rpc GetCompetitionsDota2 (GetCompetitionsDota2Request)
+    returns (GetCompetitionsDota2Response);
+  rpc UpdateCompetitionDota2 (UpdateCompetitionDota2Request)
+    returns (UpdateCompetitionDota2Response);
+  rpc BlockCompetitionBaseById (BlockCompetitionBaseByIdRequest)
+    returns (BlockCompetitionBaseByIdResponse);
+  rpc CalculateCompetitionBaseOutcomes (CalculateCompetitionBaseOutcomesRequest)
+    returns (CalculateCompetitionBaseOutcomesResponse);
+  rpc DepositToCoefficientById (DepositToCoefficientByIdRequest)
+    returns (DepositToCoefficientByIdResponse);
+}
+
+message CreateCompetitionDota2Request {
+  CompetitionDota2 competition_dota2 = 1;
+}
+
+message CreateCompetitionDota2Response {
+}
+
+message GetCompetitionsDota2Request {
+  int32 page = 1;
+  int32 page_size = 2;
+}
+
+message GetCompetitionsDota2Response {
+  repeated CompetitionDota2 competitions_dota2 = 1;
+}
+
+message UpdateCompetitionDota2Request {
+  CompetitionDota2 competition_dota2 = 1;
+}
+
+message UpdateCompetitionDota2Response {
+}
+
+message BlockCompetitionBaseByIdRequest {
+  string id = 1;
+}
+
+message BlockCompetitionBaseByIdResponse {
+}
+
+message CalculateCompetitionBaseOutcomesRequest {
+}
+
+message CalculateCompetitionBaseOutcomesResponse {
+}
+
+message DepositToCoefficientByIdRequest {
+  string coefficient_id = 1;
+  double amount = 2;
+}
+
+message DepositToCoefficientByIdResponse {
+  double rate = 1;
+}
+
+enum CompetitionStatusType {
+  COMPETITION_STATUS_TYPE_UNSPECIFIED = 0;
+  COMPETITION_STATUS_TYPE_WAITING = 1;
+  COMPETITION_STATUS_TYPE_LIVE = 2;
+  COMPETITION_STATUS_TYPE_ENDED = 3;
+}
+
+enum CompetitionType {
+  COMPETITION_TYPE_UNSPECIFIED = 0;
+  COMPETITION_TYPE_ESPORTCS = 1;
+  COMPETITION_TYPE_ESPORTDOTA2 = 2;
+  COMPETITION_TYPE_FOOTBALL = 3;
+}
+
+enum CoefficientGroupType {
+  COEFFICIENT_GROUP_TYPE_UNSPECIFIED = 0;
+  COEFFICIENT_GROUP_TYPE_ONE_WINNER = 1;
+  COEFFICIENT_GROUP_TYPE_TWO_WINNERS = 2;
+}
+
+enum CoefficientStatusType {
+  COEFFICIENT_STATUS_TYPE_UNSPECIFIED = 0;
+  COEFFICIENT_STATUS_TYPE_ACTIVE = 1;
+  COEFFICIENT_STATUS_TYPE_COMPLETED = 2;
+  COEFFICIENT_STATUS_TYPE_BLOCKED = 3;
+}
+
+message Coefficient {
+  string id = 1;
+  string description = 2;
+  double rate = 3;
+  CoefficientStatusType status_type = 4;
+  double amount = 5;
+  double probability = 6;
+}
+
+message CoefficientGroup {
+  string id = 1;
+  string name = 2;
+  CoefficientGroupType type = 3;
+  repeated Coefficient coefficients = 4;
+}
+
+message CompetitionDota2 {
+  string id = 1;
+  string team1_id = 2;
+  string team2_id = 3;
+  int32 team1_kill_amount = 4;
+  int32 team2_kill_amount = 5;
+  .google.protobuf.Timestamp total_time = 6;
+}
+
+message CompetitionBase {
+  string id = 1;
+  CompetitionType type = 2;
+  CompetitionStatusType status_type = 3;
+  .google.protobuf.Timestamp start_time = 4;
+  repeated CoefficientGroup coefficient_groups = 5;
+}
+
+message CoefficientGroup {
+  string id = 1;
+  string name = 2;
+  CoefficientGroupType type = 3;
+  repeated Coefficient coefficients = 4;
+}
+
+message Coefficient {
+  string id = 1;
+  string description = 2;
+  double rate = 3;
+  CoefficientStatusType status_type = 4;
+  double amount = 5;
+  double probability = 6;
+}
