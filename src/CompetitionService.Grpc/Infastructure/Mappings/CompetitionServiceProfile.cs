@@ -2,6 +2,7 @@
 using Google.Protobuf.WellKnownTypes;
 
 using BusinessModels = CompetitionService.BusinessLogic.Models;
+using BusnessEnums = CompetitionService.BusinessLogic.Enums;
 
 namespace CompetitionService.Grpc.Infastructure.Mappings
 {
@@ -18,6 +19,15 @@ namespace CompetitionService.Grpc.Infastructure.Mappings
                 .ConvertUsing(x => Timestamp.FromDateTime(x));
             CreateMap<Timestamp, DateTime>()
                 .ConvertUsing(x => x.ToDateTime());
+
+            CreateMap<BusnessEnums.CoefficientGroupType, CoefficientGroupType>()
+                .ReverseMap();
+            CreateMap<BusnessEnums.CoefficientStatusType, CoefficientStatusType>()
+                .ReverseMap();
+            CreateMap<BusnessEnums.CompetitionStatusType, CompetitionStatusType>()
+                .ReverseMap();
+            CreateMap<BusnessEnums.CompetitionType, CompetitionType>()
+                .ReverseMap();
 
             CreateMap<BusinessModels.Coefficient, Coefficient>()
                 .ReverseMap();
