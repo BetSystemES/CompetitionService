@@ -1,12 +1,12 @@
 syntax = "proto3";
 
-package betserivce;
+package competitionservice;
 
 import "google/protobuf/timestamp.proto";
 
-option csharp_namespace = "CompetitionSerivce.Grpc";
+option csharp_namespace = "CompetitionService.Grpc";
 
-service CompetitionSerivce {
+service CompetitionService {
   rpc CreateCompetitionDota2 (CreateCompetitionDota2Request)
     returns (CreateCompetitionDota2Response);
   rpc GetCompetitionsDota2 (GetCompetitionsDota2Request)
@@ -93,22 +93,6 @@ enum CoefficientStatusType {
   COEFFICIENT_STATUS_TYPE_BLOCKED = 3;
 }
 
-message Coefficient {
-  string id = 1;
-  string description = 2;
-  double rate = 3;
-  CoefficientStatusType status_type = 4;
-  double amount = 5;
-  double probability = 6;
-}
-
-message CoefficientGroup {
-  string id = 1;
-  string name = 2;
-  CoefficientGroupType type = 3;
-  repeated Coefficient coefficients = 4;
-}
-
 message CompetitionDota2 {
   string id = 1;
   string team1_id = 2;
@@ -116,6 +100,7 @@ message CompetitionDota2 {
   int32 team1_kill_amount = 4;
   int32 team2_kill_amount = 5;
   .google.protobuf.Timestamp total_time = 6;
+  CompetitionBase competition_base = 7;
 }
 
 message CompetitionBase {
