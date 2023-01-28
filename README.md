@@ -28,9 +28,21 @@ Example of competition_dota2 entity:
 ```
 {
 	"competition_dota2" : {
+	"id" : "b350c9fd-3632-4b0a-b5cb-66e41d530f55",
+	"team1_id" : "b350c9fd-3632-4b0a-b5cb-66e41d530f55",
+	"team2_id" : "b350c9fd-3632-4b0a-b5cb-66e41d530f55",
+	"team1_kill_amount" : 0,
+	"team2_kill_amount" : 0,
+	"total_time" : 
+		{
+			"seconds": "60",
+			 "nanos": 928852400
+		},
+	"competition_base" : 
+	{
 		"id" : "b350c9fd-3632-4b0a-b5cb-66e41d530f55",
 		"type" : "COMPETITION_TYPE_ESPORTDOTA2",
-		"status_type" : "COMPETITION_STATUS_TYPE_WAITING",
+		"status_type" : "COMPETITION_STATUS_TYPE_LIVE",
 		"start_time" : 
 		{
 			"seconds": "60",
@@ -41,61 +53,29 @@ Example of competition_dota2 entity:
 			{
 				"id" : "b350c9fd-3632-4b0a-b5cb-66e41d530f55",
 				"name" : "winner",
-				"type" : "OUTCOME_GROUP_TYPE_ONE_WINNER",
+				"type" : "COEFFICIENT_GROUP_TYPE_ONE_WINNER",
 				"coefficients" : 
 				[
-						{
-							"id" : "b350c9fd-3632-4b0a-b5cb-66e41d530f55",
-							"description" : "team1 won",
-							"rate" : 1.2,
-							"status_type" : "COEFFICIENT_STATUS_TYPE_ACTIVE",
-							"amount" : 0,
-							"probability" : 50
-						},
-						{
-							"id" : "3c203bd7-2d7e-4937-a82a-e451cedf2ba8",
-							"description" : "team2 won",
-							"rate" : 0,
-							"status_type" : "COEFFICIENT_STATUS_TYPE_ACTIVE",
-							"amount" : 0,
-							"probability" : 50
-						}
-				]
-			},
-			{
-				"id" : "1e52e2e0-af3e-4e8d-a8e1-a87a44114b59",
-				"name" : "winner",
-				"type" : "OUTCOME_GROUP_TYPE_ONE_WINNER",
-				"coefficients" : 
-				[
-						{
-							"id" : "b350c9fd-3632-4b0a-b5cb-66e41d530f55",
-							"description" : "team1 won",
-							"rate" : 1.2,
-							"status_type" : "COEFFICIENT_STATUS_TYPE_ACTIVE",
-							"amount" : 0,
-							"probability" : 50
-						},
-						{
-							"id" : "3c203bd7-2d7e-4937-a82a-e451cedf2ba8",
-							"description" : "team2 won",
-							"rate" : 0,
-							"status_type" : "COEFFICIENT_STATUS_TYPE_ACTIVE",
-							"amount" : 0,
-							"probability" : 50
-						}
+					{
+						"id" : "b350c9fd-3632-4b0a-b5cb-66e41d530f55",
+						"description" : "desc",
+						"rate" : 1,
+						"status_type" : "COEFFICIENT_STATUS_TYPE_ACTIVE",
+						"amount" : 0,
+						"probability" : 50
+					},
+					{
+						"id" : "1aa86674-0c09-43d7-b246-7a9af57bcc97",
+						"description" : "desc",
+						"rate" : 1,
+						"status_type" : "COEFFICIENT_STATUS_TYPE_ACTIVE",
+						"amount" : 0,
+						"probability" : 50
+					}
 				]
 			}
-		],
-		"team1_id" : "b350c9fd-3632-4b0a-b5cb-66e41d530f55",
-		"team2_id" : "b350c9fd-3632-4b0a-b5cb-66e41d530f55",
-		"team1_kill_amount" : 0,
-		"team2_kill_amount" : 0,
-		"total_time" : 
-		{
-			"seconds": "60",
-			 "nanos": 928852400
-		}
+		]
 	}
+}
 }
 ```
