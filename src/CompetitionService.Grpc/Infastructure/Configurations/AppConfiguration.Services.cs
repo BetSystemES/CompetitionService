@@ -1,6 +1,6 @@
 ﻿using CompetitionService.BusinessLogic.Contracts.Services;
 using CompetitionService.BusinessLogic.Services;
-
+using CompetitionService.Grpc.Infastructure.Mappings;
 using BusinessModels = CompetitionService.BusinessLogic.Models;
 
 namespace CompetitionService.Grpc.Infastructure.Configurations
@@ -14,7 +14,8 @@ namespace CompetitionService.Grpc.Infastructure.Configurations
         /// <returns>IServiceCollection.</returns>
         public static IServiceCollection AddInfrastructureServices(this IServiceCollection services)
         {
-            //services.AddAutoMapper(typeof(AuctionProfile).Assembly);
+            services.AddAutoMapper(typeof(CompetitionServiceProfile).Assembly);
+
             services.AddScoped<ICompetitionService<BusinessModels.Competitions.CompetitionDota2>, CompetitionDota2Service>();
 
             return services;
