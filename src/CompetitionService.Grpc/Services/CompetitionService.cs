@@ -31,29 +31,62 @@ namespace CompetitionService.Grpc.Services
             return response;
         }
 
-        public override Task<GetCompetitionsDota2Response> GetCompetitionsDota2(GetCompetitionsDota2Request request, ServerCallContext context)
+        public override async Task<GetCompetitionsDota2Response> GetCompetitionsDota2(GetCompetitionsDota2Request request, ServerCallContext context)
         {
-            return base.GetCompetitionsDota2(request, context);
+            var token = context.CancellationToken;
+
+            var page = request.Page;
+            var pageSize = request.PageSize;
+
+            var competitions = await _competitionDota2Service.GetRange(page, pageSize, token);
+
+            var grpcCompetitions = _mapper.Map<IEnumerable<CompetitionDota2>>(competitions);
+
+            var response = new GetCompetitionsDota2Response();
+
+            response.CompetitionsDota2.AddRange(grpcCompetitions);
+
+            return response;
         }
 
-        public override Task<UpdateCompetitionDota2Response> UpdateCompetitionDota2(UpdateCompetitionDota2Request request, ServerCallContext context)
+        public override async Task<UpdateCompetitionDota2Response> UpdateCompetitionDota2(UpdateCompetitionDota2Request request, ServerCallContext context)
         {
-            return base.UpdateCompetitionDota2(request, context); 
+            var token = context.CancellationToken;
+
+            var updatedCompetition = _mapper.Map<CompetitionBusinessModels.CompetitionDota2>(request.CompetitionDota2);
+
+            await _competitionDota2Service.Update(updatedCompetition, token);
+
+            var response = new UpdateCompetitionDota2Response();
+
+            return response;
         }
 
-        public override Task<BlockCompetitionBaseByIdResponse> BlockCompetitionBaseById(BlockCompetitionBaseByIdRequest request, ServerCallContext context)
+        public override async Task<BlockCompetitionBaseByIdResponse> BlockCompetitionBaseById(BlockCompetitionBaseByIdRequest request, ServerCallContext context)
         {
-            return base.BlockCompetitionBaseById(request, context);
+            var token = context.CancellationToken;
+
+            var response = new BlockCompetitionBaseByIdResponse();
+
+            return response;
         }
 
-        public override Task<CalculateCompetitionBaseOutcomesResponse> CalculateCompetitionBaseOutcomes(CalculateCompetitionBaseOutcomesRequest request, ServerCallContext context)
+        public override async Task<CalculateCompetitionBaseOutcomesResponse> CalculateCompetitionBaseOutcomes(CalculateCompetitionBaseOutcomesRequest request, ServerCallContext context)
         {
-            return base.CalculateCompetitionBaseOutcomes(request, context);
+            var token = context.CancellationToken;
+
+            var response = new CalculateCompetitionBaseOutcomesResponse();
+
+            return response;
         }
 
-        public override Task<DepositToCoefficientByIdResponse> DepositToCoefficientById(DepositToCoefficientByIdRequest request, ServerCallContext context)
+        public override async Task<DepositToCoefficientByIdResponse> DepositToCoefficientById(DepositToCoefficientByIdRequest request, ServerCallContext context)
         {
-            return base.DepositToCoefficientById(request, context);
+            var token = context.CancellationToken;
+
+            var response = new DepositToCoefficientByIdResponse();
+
+            return response;
         }
     }
 }
