@@ -16,7 +16,8 @@ namespace CompetitionService.DataAccess.Providers
         public Task<CompetitionBase?> GetById(Guid id, CancellationToken token)
         {
             return _entities
-                .Include(x => x.CoefficientGroups.Select(x => x.Coefficients))
+                .Include(x => x.CoefficientGroups)
+                .ThenInclude(x => x.Coefficients)
                 .FirstOrDefaultAsync(x => x.Id == id, token);
         }
     }

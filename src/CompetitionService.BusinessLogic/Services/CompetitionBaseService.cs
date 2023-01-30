@@ -33,6 +33,7 @@ namespace CompetitionService.BusinessLogic.Services
             competitionBase.SetCoefficientsStatus(_defaultBlockedStatus);
 
             await _repository.Update(competitionBase, token);
+            await _context.SaveChanges(token);
         }
 
         public async Task CompleteCompetitionBaseOutcomes(CompetitionBase competitionBase, CancellationToken token)

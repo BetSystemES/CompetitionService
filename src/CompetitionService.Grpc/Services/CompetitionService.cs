@@ -9,13 +9,19 @@ namespace CompetitionService.Grpc.Services
     public class CompetitionService : Grpc.CompetitionService.CompetitionServiceBase
     {
         private readonly ICompetitionService<CompetitionBusinessModels.CompetitionDota2> _competitionDota2Service;
+        private readonly ICoefficientService _coefficientService;
+        private readonly ICompetitionBaseService _competitionBaseService;
         private readonly IMapper _mapper;
 
         public CompetitionService(
             ICompetitionService<CompetitionBusinessModels.CompetitionDota2> competitionDota2Service,
+            ICoefficientService coefficientService,
+            ICompetitionBaseService competitionBaseService,
             IMapper mapper)
         {
             _competitionDota2Service = competitionDota2Service;
+            _coefficientService = coefficientService;
+            _competitionBaseService = competitionBaseService;
             _mapper = mapper;
         }
 
@@ -66,6 +72,10 @@ namespace CompetitionService.Grpc.Services
         {
             var token = context.CancellationToken;
 
+            var competitionBaseId = _mapper.Map<Guid>(request.Id);
+
+            await _competitionBaseService.BlockCompetitionBaseById(competitionBaseId, token);
+
             var response = new BlockCompetitionBaseByIdResponse();
 
             return response;
@@ -74,6 +84,10 @@ namespace CompetitionService.Grpc.Services
         public override async Task<CompleteCompetitionBaseOutcomesResponse> CompleteCompetitionBaseOutcomes(CompleteCompetitionBaseOutcomesRequest request, ServerCallContext context)
         {
             var token = context.CancellationToken;
+
+            var completedCompetitionBase = _mapper.Map<CompetitionBusinessModels.CompetitionBase>(request.CompetitionBase);
+
+            await _competitionBaseService.CompleteCompetitionBaseOutcomes(completedCompetitionBase, token);
 
             var response = new CompleteCompetitionBaseOutcomesResponse();
 
@@ -84,7 +98,15 @@ namespace CompetitionService.Grpc.Services
         {
             var token = context.CancellationToken;
 
-            var response = new DepositToCoefficientByIdResponse();
+            var coefficientId = _mapper.Map<Guid>(request.CoefficientId);
+            var amount = request.Amount;
+
+            var rate = await _coefficientService.DepositToCoefficientById(coefficientId, amount, token);
+
+            var response = new DepositToCoefficientByIdResponse
+            {
+                Rate = rate
+            };
 
             return response;
         }
