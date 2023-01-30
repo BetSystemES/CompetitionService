@@ -15,8 +15,8 @@ service CompetitionService {
     returns (UpdateCompetitionDota2Response);
   rpc BlockCompetitionBaseById (BlockCompetitionBaseByIdRequest)
     returns (BlockCompetitionBaseByIdResponse);
-  rpc CalculateCompetitionBaseOutcomes (CalculateCompetitionBaseOutcomesRequest)
-    returns (CalculateCompetitionBaseOutcomesResponse);
+  rpc CompleteCompetitionBaseOutcomes (CompleteCompetitionBaseOutcomesRequest)
+    returns (CompleteCompetitionBaseOutcomesResponse);
   rpc DepositToCoefficientById (DepositToCoefficientByIdRequest)
     returns (DepositToCoefficientByIdResponse);
 }
@@ -51,10 +51,11 @@ message BlockCompetitionBaseByIdRequest {
 message BlockCompetitionBaseByIdResponse {
 }
 
-message CalculateCompetitionBaseOutcomesRequest {
+message CompleteCompetitionBaseOutcomesRequest {
+  CompetitionBase competition_base = 1;
 }
 
-message CalculateCompetitionBaseOutcomesResponse {
+message CompleteCompetitionBaseOutcomesResponse {
 }
 
 message DepositToCoefficientByIdRequest {

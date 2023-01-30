@@ -71,11 +71,11 @@ namespace CompetitionService.Grpc.Services
             return response;
         }
 
-        public override async Task<CalculateCompetitionBaseOutcomesResponse> CalculateCompetitionBaseOutcomes(CalculateCompetitionBaseOutcomesRequest request, ServerCallContext context)
+        public override async Task<CompleteCompetitionBaseOutcomesResponse> CompleteCompetitionBaseOutcomes(CompleteCompetitionBaseOutcomesRequest request, ServerCallContext context)
         {
             var token = context.CancellationToken;
 
-            var response = new CalculateCompetitionBaseOutcomesResponse();
+            var response = new CompleteCompetitionBaseOutcomesResponse();
 
             return response;
         }
