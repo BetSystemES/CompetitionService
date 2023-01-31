@@ -20,7 +20,9 @@ namespace CompetitionService.DataAccess.Providers
         public Task<CompetitionDota2?> GetById(Guid id, CancellationToken token)
         {
             return _entities
-                .Include(x => x.CompetitionBase.CoefficientGroups.Select(x => x.Coefficients))
+                .Include(x => x.CompetitionBase)
+                .ThenInclude(x => x.CoefficientGroups)
+                .ThenInclude(x => x.Coefficients)
                 .FirstOrDefaultAsync(x => x.Id == id, token);
         }
 
