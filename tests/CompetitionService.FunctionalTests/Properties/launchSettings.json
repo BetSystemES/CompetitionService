@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "CompetitionService.FunctionalTests": {
+      "commandName": "Project"
+    },
+    "Docker": {
+      "commandName": "Docker"
+    }
+  }
+}
