@@ -17,6 +17,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Source", "Source", "{D1C295
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CompetitionService.IntegrationTests", "tests\CompetitionService.IntegrationTests\CompetitionService.IntegrationTests.csproj", "{021B9B3B-34EC-44E6-831D-D9CEF7B7EE3E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompetitionService.UnitTests", "tests\CompetitionService.UnitTests\CompetitionService.UnitTests.csproj", "{4057162A-BBAD-43E7-A816-0E8284DE0BC9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{021B9B3B-34EC-44E6-831D-D9CEF7B7EE3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{021B9B3B-34EC-44E6-831D-D9CEF7B7EE3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{021B9B3B-34EC-44E6-831D-D9CEF7B7EE3E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4057162A-BBAD-43E7-A816-0E8284DE0BC9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4057162A-BBAD-43E7-A816-0E8284DE0BC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4057162A-BBAD-43E7-A816-0E8284DE0BC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4057162A-BBAD-43E7-A816-0E8284DE0BC9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
