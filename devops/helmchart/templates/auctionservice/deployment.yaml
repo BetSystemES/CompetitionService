@@ -1,0 +1,90 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ogm-{{ .Release.Name }}-deploy
+  labels:
+    app: {{ .Values.auctionservice.labels.app }}
+    env: {{ .Values.env }}
+    targetApp: {{ .Values.targetApp }}
+    namespace: {{ .Values.namespace }}
+    owner: {{ .Values.owner }}
+spec:
+  selector:
+    matchLabels:
+      app: ogm-{{ .Release.Name }}-container
+  template:
+    metadata:
+      labels:
+        app: ogm-{{ .Release.Name }}-container
+        env: {{ .Values.env }}
+        targetApp: {{ .Values.targetApp }}
+        namespace: {{ .Values.namespace }}
+        owner: {{ .Values.owner }}
+    spec:
+      initContainers:
+        - name: db-migrator-container
+          image: {{ .Values.auctionservice.deployment.init.image }}
+          imagePullPolicy: {{ .Values.auctionservice.deployment.imagePullPolicy }}
+          args:
+            - "dotnet"
+            - "./AuctionService.DatabaseMigrator.dll"
+            - "--connection-string-source=env"
+            - "--connection-string-env-variable-name=DbConn"
+          env:
+            - name: DbConn
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.sharedSecrets }}
+                  key: auctionDb
+      containers:
+        - name: ogm-{{ .Release.Name }}-container
+          image: {{ .Values.auctionservice.deployment.image }}
+          imagePullPolicy: {{ .Values.auctionservice.deployment.imagePullPolicy }}
+          resources:
+            requests:
+              memory: {{ .Values.auctionservice.deployment.resources.requests.memory }}
+              cpu: {{ .Values.auctionservice.deployment.resources.requests.cpu }}
+            limits:
+              memory: {{ .Values.auctionservice.deployment.resources.limits.memory }}
+              cpu: {{ .Values.auctionservice.deployment.resources.limits.cpu }}                
+          env:
+            - name: "AuctionService_ConnectionStrings__AuctionDb"
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.sharedSecrets }}
+                  key: auctionDb
+            - name: "ASPNETCORE_ENVIRONMENT"
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.sharedSecrets }}
+                  key: aspNetEnv
+            - name: "AuctionService_HttpPort"
+              value: "{{ .Values.auctionservice.containerPort.http }}"
+            - name: "AuctionService_GrpcPort"
+              value: "{{ .Values.auctionservice.containerPort.grpc }}"
+          ports:
+            - containerPort: {{ .Values.auctionservice.containerPort.http }}
+              name: http-port
+            - containerPort: {{ .Values.auctionservice.containerPort.grpc }}
+              name: grpc-port
+          startupProbe:
+            httpGet:
+              path: /healthz/live
+              port: http-port
+            failureThreshold: 30
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /healthz/ready
+              port: http-port
+            initialDelaySeconds: {{ .Values.auctionservice.deployment.probe.initialDelaySeconds }}
+            periodSeconds: {{ .Values.auctionservice.deployment.probe.periodSeconds }}
+            timeoutSeconds: {{ .Values.auctionservice.deployment.probe.timeoutSeconds }}    
+          livenessProbe:
+            httpGet:
+              path: /healthz/live
+              port: http-port
+            initialDelaySeconds: {{ .Values.auctionservice.deployment.probe.initialDelaySeconds }}
+            periodSeconds: {{ .Values.auctionservice.deployment.probe.periodSeconds }}
+      imagePullSecrets:
+        - name: {{ .Values.imagePullSecrets }}

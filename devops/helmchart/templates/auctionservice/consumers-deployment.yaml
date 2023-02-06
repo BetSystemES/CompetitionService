@@ -1,0 +1,109 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ogm-{{ .Release.Name }}-auctionconsumers-deploy
+  labels:
+    app: {{ .Values.auctionconsumers.labels.app }}
+    env: {{ .Values.env }}
+    targetApp: {{ .Values.targetApp }}
+    namespace: {{ .Values.namespace }}
+    owner: {{ .Values.owner }}
+spec:
+  selector:
+    matchLabels:
+      app: ogm-{{ .Release.Name }}-container
+  template:
+    metadata:
+      labels:
+        app: ogm-{{ .Release.Name }}-container
+        env: {{ .Values.env }}
+        targetApp: {{ .Values.targetApp }}
+        namespace: {{ .Values.namespace }}
+        owner: {{ .Values.owner }}
+    spec:
+      containers:
+        - name: ogm-{{ .Release.Name }}-consumers-container
+          image: {{ .Values.auctionconsumers.deployment.image }}
+          imagePullPolicy: {{ .Values.auctionconsumers.deployment.imagePullPolicy }}
+          command : [
+            "dotnet",
+            "AuctionService.Consumers.dll",
+            "--connection-string-source=env",
+            "--dbconnection-string-env-variable-name=DbConn",
+            "--rabbitmq-host-env-variable-name=AuctionConsumers_RabitMqConfig__Host",
+            "--rabbitmq-port-env-variable-name=AuctionConsumers_RabitMqConfig__Port",
+            "--rabbitmq-username-env-variable-name=AuctionConsumers_RabitMqConfig__Username",
+            "--rabbitmq-password-env-variable-name=AuctionConsumers_RabitMqConfig__Password",
+            "--rabbitmq-virtual-host-env-variable-name=AuctionConsumers_RabitMqConfig__VirtualHost"
+          ]
+          
+          resources:
+            requests:
+              memory: {{ .Values.auctionconsumers.deployment.resources.requests.memory }}
+              cpu: {{ .Values.auctionconsumers.deployment.resources.requests.cpu }}
+            limits:
+              memory: {{ .Values.auctionconsumers.deployment.resources.limits.memory }}
+              cpu: {{ .Values.auctionconsumers.deployment.resources.limits.cpu }}                
+          env:
+            - name: "AuctionConsumers_ConnectionStrings__AuctionDb"
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.sharedSecrets }}
+                  key: auctionDb
+            - name: "AuctionConsumers_RabitMqConfig__Host"
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.sharedSecrets }}
+                  key: rabbitMqHost
+            - name: "AuctionConsumers_RabitMqConfig__Port"
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.sharedSecrets }}
+                  key: rabbitMqPort
+            - name: "AuctionConsumers_RabitMqConfig__Username"
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.sharedSecrets }}
+                  key: rabbitMqUsername
+            - name: "AuctionConsumers_RabitMqConfig__Password"
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.sharedSecrets }}
+                  key: rabbitMqPassword
+            - name: "AuctionConsumers_RabitMqConfig__VirtualHost"
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.sharedSecrets }}
+                  key: rabbitMqVirtualHost
+            - name: "ASPNETCORE_ENVIRONMENT"
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.sharedSecrets }}
+                  key: aspNetEnv
+            - name: "AuctionConsumers_HttpPort"
+              value: "{{ .Values.auctionconsumers.containerPort.http }}"
+          ports:
+            - containerPort: {{ .Values.auctionconsumers.containerPort.http }}
+              name: http-port
+          startupProbe: 
+            httpGet:
+              path: /healthz/live
+              port: http-port
+            failureThreshold: 30
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /healthz/ready
+              port: http-port
+            initialDelaySeconds: {{ .Values.auctionconsumers.deployment.probe.initialDelaySeconds }}
+            periodSeconds: {{ .Values.auctionconsumers.deployment.probe.periodSeconds }}
+            timeoutSeconds: {{ .Values.auctionconsumers.deployment.probe.timeoutSeconds }}    
+          livenessProbe:
+            httpGet:
+              path: /healthz/live
+              port: http-port
+            initialDelaySeconds: {{ .Values.auctionconsumers.deployment.probe.initialDelaySeconds }}
+            periodSeconds: {{ .Values.auctionconsumers.deployment.probe.periodSeconds }}
+      imagePullSecrets:
+        - name: {{ .Values.imagePullSecrets }}
+
