@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: ogm-{{ .Release.Name }}-deploy
   labels:
-    app: {{ .Values.auctionservice.labels.app }}
+    app: {{ .Values.competitionservice.labels.app }}
     env: {{ .Values.env }}
     targetApp: {{ .Values.targetApp }}
     namespace: {{ .Values.namespace }}
@@ -23,11 +23,11 @@ spec:
     spec:
       initContainers:
         - name: db-migrator-container
-          image: {{ .Values.auctionservice.deployment.init.image }}
-          imagePullPolicy: {{ .Values.auctionservice.deployment.imagePullPolicy }}
+          image: {{ .Values.competitionservice.deployment.init.image }}
+          imagePullPolicy: {{ .Values.competitionservice.deployment.imagePullPolicy }}
           args:
             - "dotnet"
-            - "./AuctionService.DatabaseMigrator.dll"
+            - "./competitionservice.DatabaseMigrator.dll"
             - "--connection-string-source=env"
             - "--connection-string-env-variable-name=DbConn"
           env:
@@ -38,17 +38,17 @@ spec:
                   key: auctionDb
       containers:
         - name: ogm-{{ .Release.Name }}-container
-          image: {{ .Values.auctionservice.deployment.image }}
-          imagePullPolicy: {{ .Values.auctionservice.deployment.imagePullPolicy }}
+          image: {{ .Values.competitionservice.deployment.image }}
+          imagePullPolicy: {{ .Values.competitionservice.deployment.imagePullPolicy }}
           resources:
             requests:
-              memory: {{ .Values.auctionservice.deployment.resources.requests.memory }}
-              cpu: {{ .Values.auctionservice.deployment.resources.requests.cpu }}
+              memory: {{ .Values.competitionservice.deployment.resources.requests.memory }}
+              cpu: {{ .Values.competitionservice.deployment.resources.requests.cpu }}
             limits:
-              memory: {{ .Values.auctionservice.deployment.resources.limits.memory }}
-              cpu: {{ .Values.auctionservice.deployment.resources.limits.cpu }}                
+              memory: {{ .Values.competitionservice.deployment.resources.limits.memory }}
+              cpu: {{ .Values.competitionservice.deployment.resources.limits.cpu }}                
           env:
-            - name: "AuctionService_ConnectionStrings__AuctionDb"
+            - name: "competitionservice_ConnectionStrings__AuctionDb"
               valueFrom:
                 secretKeyRef:
                   name: {{ .Values.sharedSecrets }}
@@ -58,14 +58,14 @@ spec:
                 secretKeyRef:
                   name: {{ .Values.sharedSecrets }}
                   key: aspNetEnv
-            - name: "AuctionService_HttpPort"
-              value: "{{ .Values.auctionservice.containerPort.http }}"
-            - name: "AuctionService_GrpcPort"
-              value: "{{ .Values.auctionservice.containerPort.grpc }}"
+            - name: "competitionservice_HttpPort"
+              value: "{{ .Values.competitionservice.containerPort.http }}"
+            - name: "competitionservice_GrpcPort"
+              value: "{{ .Values.competitionservice.containerPort.grpc }}"
           ports:
-            - containerPort: {{ .Values.auctionservice.containerPort.http }}
+            - containerPort: {{ .Values.competitionservice.containerPort.http }}
               name: http-port
-            - containerPort: {{ .Values.auctionservice.containerPort.grpc }}
+            - containerPort: {{ .Values.competitionservice.containerPort.grpc }}
               name: grpc-port
           startupProbe:
             httpGet:
@@ -77,14 +77,14 @@ spec:
             httpGet:
               path: /healthz/ready
               port: http-port
-            initialDelaySeconds: {{ .Values.auctionservice.deployment.probe.initialDelaySeconds }}
-            periodSeconds: {{ .Values.auctionservice.deployment.probe.periodSeconds }}
-            timeoutSeconds: {{ .Values.auctionservice.deployment.probe.timeoutSeconds }}    
+            initialDelaySeconds: {{ .Values.competitionservice.deployment.probe.initialDelaySeconds }}
+            periodSeconds: {{ .Values.competitionservice.deployment.probe.periodSeconds }}
+            timeoutSeconds: {{ .Values.competitionservice.deployment.probe.timeoutSeconds }}    
           livenessProbe:
             httpGet:
               path: /healthz/live
               port: http-port
-            initialDelaySeconds: {{ .Values.auctionservice.deployment.probe.initialDelaySeconds }}
-            periodSeconds: {{ .Values.auctionservice.deployment.probe.periodSeconds }}
+            initialDelaySeconds: {{ .Values.competitionservice.deployment.probe.initialDelaySeconds }}
+            periodSeconds: {{ .Values.competitionservice.deployment.probe.periodSeconds }}
       imagePullSecrets:
         - name: {{ .Values.imagePullSecrets }}
