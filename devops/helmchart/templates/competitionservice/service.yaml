@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ogm-{{ .Release.Name }}-svc
+  labels:
+    app: {{ .Values.auctionservice.labels.app }}
+    env: {{ .Values.env }}
+    targetApp: {{ .Values.targetApp }}
+    namespace: {{ .Values.namespace }}
+    owner: {{ .Values.owner }}
+spec:
+  selector:
+    app: ogm-{{ .Release.Name }}-container
+  ports:
+    - name: app-http-listener
+      protocol: TCP
+      port: {{ .Values.auctionservice.servicePort.http }}
+      targetPort: {{ .Values.auctionservice.containerPort.http }}
+    - name: app-grpc-listener
+      protocol: TCP
+      port: {{ .Values.auctionservice.servicePort.grpc }}
+      targetPort: {{ .Values.auctionservice.containerPort.grpc }}
+  type: {{ .Values.auctionservice.service.type }}

@@ -3,16 +3,25 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompetitionService.DataAccess", "src\CompetitionService.DataAccess\CompetitionService.DataAccess.csproj", "{43DBE277-8754-48B8-A207-2AEFF3D62A92}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CompetitionService.DataAccess", "src\CompetitionService.DataAccess\CompetitionService.DataAccess.csproj", "{43DBE277-8754-48B8-A207-2AEFF3D62A92}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompetitionService.BusinessLogic", "src\CompetitionService.BusinessLogic\CompetitionService.BusinessLogic.csproj", "{CFCA9FC0-9E92-4519-A50D-643513A8AF7E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CompetitionService.BusinessLogic", "src\CompetitionService.BusinessLogic\CompetitionService.BusinessLogic.csproj", "{CFCA9FC0-9E92-4519-A50D-643513A8AF7E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompetitionService.Grpc", "src\CompetitionService.Grpc\CompetitionService.Grpc.csproj", "{0345B824-63C4-428E-9EA4-96A774D1EDEF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CompetitionService.Grpc", "src\CompetitionService.Grpc\CompetitionService.Grpc.csproj", "{0345B824-63C4-428E-9EA4-96A774D1EDEF}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Source", "Source", "{D1C2954B-DFCC-41F7-983B-A44FF7C50B01}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
+		README.md = README.md
 	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CompetitionService.IntegrationTests", "tests\CompetitionService.IntegrationTests\CompetitionService.IntegrationTests.csproj", "{021B9B3B-34EC-44E6-831D-D9CEF7B7EE3E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CompetitionService.UnitTests", "tests\CompetitionService.UnitTests\CompetitionService.UnitTests.csproj", "{4057162A-BBAD-43E7-A816-0E8284DE0BC9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CompetitionService.DatabaseMigrator", "src\CompetitionService.DatabaseMigrator\CompetitionService.DatabaseMigrator.csproj", "{EE0BEA31-834B-4906-97E2-DE0A58245614}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompetitionService.FunctionalTests", "tests\CompetitionService.FunctionalTests\CompetitionService.FunctionalTests.csproj", "{6514CD10-694E-4083-AA2F-507191DE1E97}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -32,6 +41,22 @@ Global
 		{0345B824-63C4-428E-9EA4-96A774D1EDEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0345B824-63C4-428E-9EA4-96A774D1EDEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0345B824-63C4-428E-9EA4-96A774D1EDEF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{021B9B3B-34EC-44E6-831D-D9CEF7B7EE3E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{021B9B3B-34EC-44E6-831D-D9CEF7B7EE3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{021B9B3B-34EC-44E6-831D-D9CEF7B7EE3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{021B9B3B-34EC-44E6-831D-D9CEF7B7EE3E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4057162A-BBAD-43E7-A816-0E8284DE0BC9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4057162A-BBAD-43E7-A816-0E8284DE0BC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4057162A-BBAD-43E7-A816-0E8284DE0BC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4057162A-BBAD-43E7-A816-0E8284DE0BC9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE0BEA31-834B-4906-97E2-DE0A58245614}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE0BEA31-834B-4906-97E2-DE0A58245614}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE0BEA31-834B-4906-97E2-DE0A58245614}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE0BEA31-834B-4906-97E2-DE0A58245614}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6514CD10-694E-4083-AA2F-507191DE1E97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6514CD10-694E-4083-AA2F-507191DE1E97}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6514CD10-694E-4083-AA2F-507191DE1E97}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6514CD10-694E-4083-AA2F-507191DE1E97}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,8 +1,7 @@
-﻿using CompetitionService.DataAccess;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 
-namespace AuctionService.DataAccess
+namespace CompetitionService.DataAccess
 {
     /// <summary>
     /// Auction service context factory

@@ -1,0 +1,30 @@
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: ogm-{{ .Release.Name }}-hpa
+  labels:
+    app: {{ .Values.auctionservice.labels.app }}
+    env: {{ .Values.env }}
+    targetApp: {{ .Values.targetApp }}
+    namespace: {{ .Values.namespace }}
+    owner: {{ .Values.owner }}
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v2beta1
+    kind: Deployment
+    name: ogm-{{ .Release.Name }}-deploy
+  minReplicas: {{ .Values.auctionservice.autoscaling.replicas.min }}
+  maxReplicas: {{ .Values.auctionservice.autoscaling.replicas.max }}
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: {{ .Values.auctionservice.autoscaling.cpuAverageUtilization }}
+    - type: Resource
+      resource:
+        name: memory
+        target:
+          type: Utilization
+          averageUtilization: {{ .Values.auctionservice.autoscaling.memoryAverageUtilization }}
