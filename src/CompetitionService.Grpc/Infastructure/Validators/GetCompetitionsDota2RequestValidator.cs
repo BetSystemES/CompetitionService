@@ -1,0 +1,23 @@
+﻿
+using FluentValidation;
+
+namespace CompetitionService.Grpc.Infastructure.Validators
+{
+    /// <summary>
+    /// Validator for <seealso cref="GetCompetitionsDota2Request"/>.
+    /// </summary>
+    public class GetCompetitionsDota2RequestValidator : AbstractValidator<GetCompetitionsDota2Request>
+    {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GetCompetitionsDota2RequestValidator"/> class.
+        /// </summary>
+        public GetCompetitionsDota2RequestValidator()
+        {
+            RuleFor(e => e.Page)
+                .NotNull().GreaterThan(0);
+
+            RuleFor(e => e.PageSize)
+                .NotNull().GreaterThan(0);
+        }
+    }
+}
