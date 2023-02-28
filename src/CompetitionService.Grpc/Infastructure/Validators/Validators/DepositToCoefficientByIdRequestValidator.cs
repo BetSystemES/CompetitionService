@@ -1,7 +1,7 @@
 ﻿using CompetitionService.Grpc.Infastructure.ValidationRules;
 using FluentValidation;
 
-namespace CompetitionService.Grpc.Infastructure.Validators
+namespace CompetitionService.Grpc.Infastructure.Validators.Validators
 {
     /// <summary>
     /// Validator for <seealso cref="DepositToCoefficientByIdRequest"/>
