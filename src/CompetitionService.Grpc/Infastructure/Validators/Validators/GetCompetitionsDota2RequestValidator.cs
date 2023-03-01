@@ -13,10 +13,14 @@ namespace CompetitionService.Grpc.Infastructure.Validators.Validators
         public GetCompetitionsDota2RequestValidator()
         {
             RuleFor(e => e.Page)
-                .NotNull().GreaterThan(0);
+                .NotNull()
+                .GreaterThan(0)
+                .WithMessage("Page value is invalid");
 
             RuleFor(e => e.PageSize)
-                .NotNull().GreaterThan(0);
+                .NotNull()
+                .GreaterThan(0)
+                .WithMessage("PageSize value is invalid");
         }
     }
 }

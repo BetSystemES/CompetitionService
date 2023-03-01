@@ -3,10 +3,17 @@ using FluentValidation;
 
 namespace CompetitionService.Grpc.Infastructure.Validators
 {
+    /// <summary>
+    /// Validator for <seealso cref="CompetitionBase"/>
+    /// </summary>
+    /// <seealso cref="FluentValidation.AbstractValidator&lt;CompetitionService.Grpc.CompetitionBase&gt;" />
     public class CompetitionBaseValidator : AbstractValidator<CompetitionBase>
     {
         private static readonly string _typeName = nameof(CompetitionBase);
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CompetitionBaseValidator"/> class.
+        /// </summary>
         public CompetitionBaseValidator()
         {
             RuleForEach(x => x.CoefficientGroups)
@@ -14,7 +21,8 @@ namespace CompetitionService.Grpc.Infastructure.Validators
                 .SetValidator(new CoefficientGroupValidator());
 
             RuleFor(x => x.Id)
-                .MustBeValidGuid();
+                .MustBeValidGuid()
+                .WithMessage($"{_typeName}.${nameof(CompetitionBase.Id)} is invalid");
 
             RuleFor(x => x.StatusType)
                 .Must(x => x != CompetitionStatusType.Unspecified)

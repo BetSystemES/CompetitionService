@@ -1,7 +1,12 @@
-﻿using FluentValidation;
+﻿using CompetitionService.Grpc.Infastructure.ValidationRules;
+using FluentValidation;
 
 namespace CompetitionService.Grpc.Infastructure.Validators
 {
+    /// <summary>
+    /// Validator for <seealso cref="Coefficient"/>
+    /// </summary>
+    /// <seealso cref="FluentValidation.AbstractValidator&lt;CompetitionService.Grpc.Coefficient&gt;" />
     public class CoefficientValidator : AbstractValidator<Coefficient>
     {
         private static readonly string _typeName = nameof(Coefficient);
@@ -11,12 +16,16 @@ namespace CompetitionService.Grpc.Infastructure.Validators
 
         public CoefficientValidator()
         {
+            RuleFor(x => x.Id)
+                .MustBeValidGuid()
+                .WithMessage($"{_typeName}.${nameof(Coefficient.Id)} is invalid");
+
             RuleFor(x => x.StatusType)
                 .Must(e => e != CoefficientStatusType.Unspecified)
                 .WithMessage($"Received {nameof(Coefficient.StatusType)} type is unsupported");
 
             RuleFor(x => x.Description)
-                .Must(e => string.IsNullOrEmpty(e))
+                .Must(e => !string.IsNullOrEmpty(e))
                 .WithMessage($"{_typeName}.${nameof(Coefficient.Description)} is invalid");
 
             RuleFor(x => x.Rate)

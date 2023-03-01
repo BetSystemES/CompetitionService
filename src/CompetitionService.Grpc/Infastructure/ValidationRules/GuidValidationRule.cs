@@ -18,8 +18,7 @@ namespace CompetitionService.Grpc.Infastructure.ValidationRules
             var builderOptions = ruleBuilder
                 .NotNull()
                 .NotEmpty()
-                .Must(e => Guid.TryParse(e, out var guid))
-                .WithMessage("Received invalid guid");
+                .Must(e => Guid.TryParse(e, out var guid));
 
             return builderOptions;
         }
