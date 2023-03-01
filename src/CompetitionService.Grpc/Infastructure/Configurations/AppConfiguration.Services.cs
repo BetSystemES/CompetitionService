@@ -1,6 +1,7 @@
 ﻿using CompetitionService.BusinessLogic.Contracts.Services;
 using CompetitionService.BusinessLogic.Services;
 using CompetitionService.Grpc.Infastructure.Mappings;
+using FluentValidation;
 using BusinessModels = CompetitionService.BusinessLogic.Models;
 
 namespace CompetitionService.Grpc.Infastructure.Configurations
@@ -19,6 +20,8 @@ namespace CompetitionService.Grpc.Infastructure.Configurations
             services.AddScoped<ICompetitionService<BusinessModels.Competitions.CompetitionDota2>, CompetitionDota2Service>();
             services.AddScoped<ICompetitionBaseService, CompetitionBaseService>();
             services.AddScoped<ICoefficientService, CoefficientService>();
+
+            services.AddValidatorsFromAssembly(typeof(Program).Assembly);
 
             return services;
         }
