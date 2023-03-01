@@ -10,6 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace CompetitionService.DataAccess
 {
+    // TODO: change file location to CompetitionService.DataAccess.Extensions
     public static class DataAccessServiceExtensions
     {
         public static IServiceCollection AddPostgreSqlContext(this IServiceCollection services,

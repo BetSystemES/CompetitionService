@@ -2,6 +2,8 @@
 
 namespace CompetitionService.Grpc.Infastructure.Validators.Validators
 {
+    // TODO: Rename folder from Infastructure to Infrastructure
+    // TODO: Change file location to CompetitionService.Grpc.Infrastructure.Validators
     /// <summary>
     /// Validator for <seealso cref="CompleteCompetitionBaseOutcomesRequest"/>
     /// </summary>

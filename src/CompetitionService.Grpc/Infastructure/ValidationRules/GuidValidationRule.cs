@@ -2,6 +2,9 @@
 
 namespace CompetitionService.Grpc.Infastructure.ValidationRules
 {
+    // TODO: Rename folder from Infastructure to Infrastructure
+    // TODO: change file location to CashService.GRPC.Extensions
+    // TODO: rename file to ValidationRulesExtensions
     /// <summary>
     /// Validation rule for guid
     /// </summary>

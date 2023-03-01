@@ -1,5 +1,6 @@
 ﻿namespace CompetitionService.BusinessLogic.Contracts.DataAccess
 {
+    // TODO: change file location to CashService.DataAccess.Contracts
     /// <summary>
     ///   Data context provider
     /// </summary>

@@ -2,6 +2,7 @@
 
 namespace CompetitionService.BusinessLogic.Models.Competitions
 {
+    // TODO: Change file location to CompetitionService.DataAccess.Entities
     /// <summary>
     /// competition base entity
     /// </summary>

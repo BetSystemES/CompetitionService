@@ -6,6 +6,8 @@ using BusinessModels = CompetitionService.BusinessLogic.Models;
 
 namespace CompetitionService.Grpc.Infastructure.Configurations
 {
+    // TODO: Rename folder from Infastructure to Infrastructure
+    // TODO: Rename class from AppConfiguration to AppConfigurations
     public static partial class AppConfiguration
     {
         /// <summary>
@@ -21,6 +23,7 @@ namespace CompetitionService.Grpc.Infastructure.Configurations
             services.AddScoped<ICompetitionBaseService, CompetitionBaseService>();
             services.AddScoped<ICoefficientService, CoefficientService>();
 
+            // TODO: Add new AppConfigurations partial class for fluent validation
             services.AddValidatorsFromAssembly(typeof(Program).Assembly);
 
             return services;

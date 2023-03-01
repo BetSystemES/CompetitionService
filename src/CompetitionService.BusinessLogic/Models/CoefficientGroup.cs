@@ -3,6 +3,7 @@ using CompetitionService.BusinessLogic.Models.Competitions;
 
 namespace CompetitionService.BusinessLogic.Models
 {
+    // TODO: Change file location to CompetitionService.DataAccess.Entities
     public class CoefficientGroup
     {
         public CoefficientGroup()
@@ -13,6 +14,7 @@ namespace CompetitionService.BusinessLogic.Models
 
         public Guid CompetitionBaseId { get; set; }
 
+        // TODO: typo competitionBase. Should be CompetitionBase
         public CompetitionBase competitionBase { get; set; }
 
         public string Name { get; set; }

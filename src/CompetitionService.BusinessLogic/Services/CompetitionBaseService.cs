@@ -40,7 +40,7 @@ namespace CompetitionService.BusinessLogic.Services
         {
             await _repository.Update(competitionBase, token);
             await _context.SaveChanges(token);
-            // todo: send coefficient statuses to BetService
+            // TODO: send coefficient statuses to BetService
         }
     }
 }

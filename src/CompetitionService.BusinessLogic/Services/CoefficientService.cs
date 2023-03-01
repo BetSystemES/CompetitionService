@@ -1,4 +1,5 @@
-﻿using System.Runtime.CompilerServices;
+﻿// TODO: remove unused usings
+using System.Runtime.CompilerServices;
 using CompetitionService.BusinessLogic.Contracts.DataAccess;
 using CompetitionService.BusinessLogic.Contracts.DataAccess.Providers;
 using CompetitionService.BusinessLogic.Contracts.DataAccess.Repositories;
@@ -21,6 +22,7 @@ namespace CompetitionService.BusinessLogic.Services
             _repository = repository;
             _context = context;
         }
+        
         public async Task<double> DepositToCoefficientById(Guid id, double amount, CancellationToken token)
         {
             var coefficient = await _provider.GetById(id, token);

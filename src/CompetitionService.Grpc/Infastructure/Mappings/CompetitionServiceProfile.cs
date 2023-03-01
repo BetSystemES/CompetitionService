@@ -6,6 +6,7 @@ using BusnessEnums = CompetitionService.BusinessLogic.Enums;
 
 namespace CompetitionService.Grpc.Infastructure.Mappings
 {
+    // TODO: Rename folder from Infastructure to Infrastructure
     public class CompetitionServiceProfile : Profile
     {
         public CompetitionServiceProfile()

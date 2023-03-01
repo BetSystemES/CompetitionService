@@ -3,6 +3,7 @@ using FluentValidation;
 
 namespace CompetitionService.Grpc.Infastructure.Validators
 {
+    // TODO: Rename folder from Infastructure to Infrastructure
     /// <summary>
     /// Validator for <seealso cref="CompetitionDota2"/>
     /// </summary>

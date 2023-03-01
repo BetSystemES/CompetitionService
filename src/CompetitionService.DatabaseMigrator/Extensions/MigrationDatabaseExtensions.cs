@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+// TODO: remove unused usings
 using Serilog;
 
 namespace CompetitionService.DatabaseMigrator.Extensions

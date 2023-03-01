@@ -25,7 +25,6 @@ namespace CompetitionService.BusinessLogic.Services
         public async Task Create(CompetitionDota2 item, CancellationToken token)
         {
             await _repository.Create(item, token);
-
             await _dataContext.SaveChanges(token);
         }
 
@@ -42,7 +41,6 @@ namespace CompetitionService.BusinessLogic.Services
         public async Task Update(CompetitionDota2 item, CancellationToken token)
         {
             await _repository.Update(item, token);
-
             await _dataContext.SaveChanges(token);
         }
     }

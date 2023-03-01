@@ -1,5 +1,6 @@
 ﻿namespace CompetitionService.BusinessLogic.Models.Competitions
 {
+    // TODO: Change file location to CompetitionService.DataAccess.Entities
     public class CompetitionDota2
     {
         public CompetitionDota2()

@@ -1,5 +1,7 @@
 ﻿namespace CompetitionService.Grpc.Infastructure.Configurations
 {
+    // TODO: Rename folder from Infastructure to Infrastructure
+    // TODO: Rename class from AppConfiguration to AppConfigurations
     /// <summary>
     ///   Add environment variables to <seealso cref="WebApplicationBuilder"/>
     /// </summary>
