@@ -1,4 +1,5 @@
-﻿using System;
+﻿// TODO: remove unused/sort usings
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,6 +17,7 @@ using FluentAssertions;
 
 namespace CompetitionService.UnitTests.BusinessLogic
 {
+    // TODO: remove all empty lines
     public class CompetitionDota2ServiceTests
     {
         private static readonly CancellationToken _ct = CancellationToken.None;
@@ -41,8 +43,8 @@ namespace CompetitionService.UnitTests.BusinessLogic
         [Fact]
         public async Task Create_Should_Create()
         {
+            // TODO: use NBuilder library for data preparation
             // Arrange
-
             var competitionDota2 = new CompetitionDota2()
             {
                 Id = Guid.Parse("7a679df5-9d39-45eb-a99b-c53eafc88a0b"),
@@ -125,7 +127,6 @@ namespace CompetitionService.UnitTests.BusinessLogic
             await _competitionService.Create(competitionDota2, _ct);
 
             // Assert
-
             _mockCompetitionRepository.Verify(_ => _.Create(
                 It.IsAny<CompetitionDota2>(),
                 It.IsAny<CancellationToken>()),
@@ -138,8 +139,8 @@ namespace CompetitionService.UnitTests.BusinessLogic
         [Fact]
         public async Task GetById_Should_Return_Competition()
         {
+            // TODO: use NBuilder library for data preparation
             // Arrange
-
             var competitionDota2 = new CompetitionDota2()
             {
                 Id = Guid.Parse("7a679df5-9d39-45eb-a99b-c53eafc88a0b"),
@@ -236,6 +237,7 @@ namespace CompetitionService.UnitTests.BusinessLogic
         [Fact]
         public async Task GetRange_Should_Return_RangeOfCompetitions()
         {
+            // TODO: use NBuilder library for data preparation
             // Arrange
             var competitionDota2 = new CompetitionDota2()
             {
@@ -335,7 +337,6 @@ namespace CompetitionService.UnitTests.BusinessLogic
             var actualCompetitions=  await _competitionService.GetRange(page, pageSize, _ct);
 
             // Assert
-
             actualCompetitions.Should()
                 .BeEquivalentTo(competitions);
         }
@@ -343,6 +344,7 @@ namespace CompetitionService.UnitTests.BusinessLogic
         [Fact]
         public async Task Update_Should_Update()
         {
+            // TODO: use NBuilder library for data preparation
             // Arrange
             var competitionDota2 = new CompetitionDota2()
             {

@@ -36,9 +36,9 @@ namespace CompetitionService.UnitTests.BusinessLogic
         public async Task BlockCompetitionBaseById_Should_BlockCompetitionById() //todo: rename
         {
             // Arrange
-
             var id = Guid.Parse("f3793808-0fc6-4e57-a9ec-20ff7c85ddfc");
 
+            // TODO: use NBuilder library for data preparation
             var competitionBaseToComplete = new CompetitionBase()
             {
                 Id = Guid.Parse("b6f43b5a-c037-404e-8cfd-8d39b54d5e77"),
@@ -115,7 +115,6 @@ namespace CompetitionService.UnitTests.BusinessLogic
             await _competitionBaseService.BlockCompetitionBaseById(id, _ct);
 
             // Assert
-
             _mockCompetitionBaseRepository.Verify(_ => _.Update(
                 It.IsAny<CompetitionBase>(),
                 It.IsAny<CancellationToken>()),
@@ -128,8 +127,8 @@ namespace CompetitionService.UnitTests.BusinessLogic
         [Fact]
         public async Task CompleteCompetitionBaseOutcomes_Should_CompleteCompetitionStatuses()
         {
+            // TODO: use NBuilder library for data preparation
             // Arrange
-
             var competitionBaseToComplete = new CompetitionBase()
             {
                 Id = Guid.Parse("b6f43b5a-c037-404e-8cfd-8d39b54d5e77"),
@@ -201,7 +200,6 @@ namespace CompetitionService.UnitTests.BusinessLogic
             await _competitionBaseService.CompleteCompetitionBaseOutcomes(competitionBaseToComplete, _ct);
 
             // Assert
-
             _mockCompetitionBaseRepository.Verify(_ => _.Update(
                 It.IsAny<CompetitionBase>(),
                 It.IsAny<CancellationToken>()),

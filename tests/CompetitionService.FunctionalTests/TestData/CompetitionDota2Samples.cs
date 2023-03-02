@@ -6,8 +6,11 @@ namespace CompetitionService.FunctionalTests.TestData
 {
     public static class CompetitionDota2Samples
     {
+        // TODO: remove all empty lines
+        // TODO: _competitionDota2_ValidModel does not match static readonly rule naming. Should be CompetitionDota2ValidModel
         public static readonly CompetitionDota2 _competitionDota2_ValidModel = new CompetitionDota2()
         {
+            // TODO: use NBuilder library for data preparation
             Id = Guid.Parse("7a679df5-9d39-45eb-a99b-c53eafc88a0b"),
             Team1Id = Guid.Parse("1b5735ce-43fb-4b5f-a8e2-0b89383f6593"),
             Team2Id = Guid.Parse("09d7eb50-901c-4f22-98f7-c9af474ac5b9"),

@@ -7,6 +7,7 @@ using CompetitionService.BusinessLogic.Models.Competitions;
 using FluentAssertions;
 using Microsoft.Extensions.DependencyInjection;
 
+// TODO: wrong namespace name CompetitionService.IntegrationTests.DataAccess.Repositories. Should be CompetitionService.IntegrationTests.DataAccess.Providers
 namespace CompetitionService.IntegrationTests.DataAccess.Repositories
 {
     public class CompetitionDota2ProviderTests : IClassFixture<GrpcAppFactory>, IDisposable
@@ -29,6 +30,7 @@ namespace CompetitionService.IntegrationTests.DataAccess.Repositories
         [Fact]
         public async Task GetRange_Should_Return_ListOfConstructions()
         {
+            // TODO: use NBuilder library for data preparation
             // Arrange
             var competitionDota2 = new CompetitionDota2()
             {
@@ -115,12 +117,13 @@ namespace CompetitionService.IntegrationTests.DataAccess.Repositories
             // Assert
             constructions.Should()
                 .NotBeNullOrEmpty();
-            //todo: assert for equal
+            //TODO: add assert for equal
         }
 
         [Fact]
         public async Task GetById_Should_Return_Construction()
         {
+            // TODO: use NBuilder library for data preparation
             // Arrange
             var competitionDota2 = new CompetitionDota2()
             {
@@ -206,7 +209,7 @@ namespace CompetitionService.IntegrationTests.DataAccess.Repositories
             // Assert
             constructions.Should()
                 .NotBeNull();
-            //todo: assert for equal
+            //TODO: add assert for equal
         }
 
         public void Dispose()

@@ -1,5 +1,6 @@
 ﻿namespace CompetitionService.FunctionalTests
 {
+    // TODO: remove this class
     public class UnitTest1
     {
         [Fact]

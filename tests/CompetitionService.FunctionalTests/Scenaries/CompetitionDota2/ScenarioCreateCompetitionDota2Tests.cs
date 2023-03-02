@@ -40,6 +40,8 @@ namespace CompetitionService.FunctionalTests.Scenaries.CompetitionDota2
 
                     return await _client.CreateCompetitionDota2Async(request);
                 });
+
+            // TODO: please add assert
         }
     }
 }

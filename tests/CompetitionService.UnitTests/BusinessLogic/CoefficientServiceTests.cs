@@ -35,8 +35,8 @@ namespace CompetitionService.UnitTests.BusinessLogic
         [Fact]
         public async Task DepositToCoefficientById_Should_Return_Rate()
         {
+            // TODO: use NBuilder library for data preparation
             // Arrange
-
             var coefficient = new Coefficient()
             {
                 Id = Guid.Parse("30a46c24-0f9c-436d-9bf2-74babb09e4d6"),
@@ -61,12 +61,11 @@ namespace CompetitionService.UnitTests.BusinessLogic
             var actualRate = await _coefficientService.DepositToCoefficientById(id, amount, _ct);
 
             // Assert
-
             actualRate.Should()
                 .Be(expectedRate);
 
             _mockDataContext.Verify(_ => _.SaveChanges(It.IsAny<CancellationToken>()),
-                Times.Once);    
+                Times.Once);
 
             _mockCoefficientRepository.Verify(_ => _.Update(
                 It.IsAny<Coefficient>(), It.IsAny<CancellationToken>()),
