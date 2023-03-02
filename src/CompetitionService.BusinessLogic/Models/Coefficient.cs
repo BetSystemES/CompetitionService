@@ -2,7 +2,7 @@
 
 namespace CompetitionService.BusinessLogic.Models
 {
-    // TODO: Change file location to CompetitionService.DataAccess.Entities
+    // TODO: Change file location to CompetitionService.BusinessLogic.Entities
     public class Coefficient
     {
         public Guid Id { get; set; }

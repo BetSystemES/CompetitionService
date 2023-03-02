@@ -2,7 +2,6 @@
 
 namespace CompetitionService.BusinessLogic.Contracts.DataAccess.Repositories
 {
-    // TODO: change file location to CashService.DataAccess.Contracts.Repositories
     public interface ICompetitionBaseRepository
     {
         Task Create(CompetitionBase item, CancellationToken token);
