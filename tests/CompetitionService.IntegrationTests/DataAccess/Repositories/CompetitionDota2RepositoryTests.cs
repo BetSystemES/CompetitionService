@@ -1,9 +1,8 @@
 ﻿using CompetitionService.BusinessLogic.Contracts.DataAccess;
 using CompetitionService.BusinessLogic.Contracts.DataAccess.Providers;
 using CompetitionService.BusinessLogic.Contracts.DataAccess.Repositories;
-using CompetitionService.BusinessLogic.Enums;
-using CompetitionService.BusinessLogic.Models;
-using CompetitionService.BusinessLogic.Models.Competitions;
+using CompetitionService.BusinessLogic.Entities;
+using CompetitionService.BusinessLogic.Models.Enums;
 using FluentAssertions;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -107,7 +106,6 @@ namespace CompetitionService.IntegrationTests.DataAccess.Repositories
                         }
                     }
                 }
-
             };
 
             // TODO: use NBuilder library for data preparation
@@ -187,7 +185,6 @@ namespace CompetitionService.IntegrationTests.DataAccess.Repositories
                         }
                     }
                 }
-
             };
 
             await _competitionRepository.Create(competitionDota2, _ct);
@@ -200,7 +197,6 @@ namespace CompetitionService.IntegrationTests.DataAccess.Repositories
             existingCompetitionDota.Should()
                 .NotBeNull().And
                 .BeEquivalentTo(competitionDota2);
-
         }
 
         public void Dispose()

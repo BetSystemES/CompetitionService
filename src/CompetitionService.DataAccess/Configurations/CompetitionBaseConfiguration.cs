@@ -1,4 +1,4 @@
-﻿using CompetitionService.BusinessLogic.Models.Competitions;
+﻿using CompetitionService.BusinessLogic.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -15,8 +15,7 @@ namespace CompetitionService.DataAccess.Configurations
             builder.Property(x => x.StartTime).IsRequired();
             builder.Property(x => x.Type).IsRequired();
 
-            // TODO: typo competitionBase. Should be CompetitionBase
-            builder.HasMany(x => x.CoefficientGroups).WithOne(x => x.competitionBase).HasForeignKey(x => x.CompetitionBaseId);
+            builder.HasMany(x => x.CoefficientGroups).WithOne(x => x.CompetitionBase).HasForeignKey(x => x.CompetitionBaseId);
 
             builder.ToTable("CompetitionBases");
         }

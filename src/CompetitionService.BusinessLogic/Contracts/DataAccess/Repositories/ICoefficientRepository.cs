@@ -1,6 +1,4 @@
-﻿// TODO: remove unused usings
-using System.Runtime.InteropServices;
-using CompetitionService.BusinessLogic.Models;
+﻿using CompetitionService.BusinessLogic.Entities;
 
 namespace CompetitionService.BusinessLogic.Contracts.DataAccess.Repositories
 {

@@ -1,6 +1,5 @@
-﻿namespace CompetitionService.BusinessLogic.Enums
+﻿namespace CompetitionService.BusinessLogic.Models.Enums
 {
-    // TODO: Change file location to CompetitionService.BusinessLogic.Models.Enums
     public enum CompetitionStatusType
     {
         Unspecified = 0,

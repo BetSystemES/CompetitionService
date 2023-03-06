@@ -35,7 +35,7 @@ namespace CompetitionService.FunctionalTests.Scenaries.CompetitionDota2
                 {
                     var request = new CreateCompetitionDota2Request();
 
-                    var competitionDota2Grpc = _mapper.Map<GrpcModels.CompetitionDota2>(CompetitionDota2Samples._competitionDota2_ValidModel);
+                    var competitionDota2Grpc = _mapper.Map<GrpcModels.CompetitionDota2>(CompetitionDota2Samples.CompetitionDota2ValidModel);
                     request.CompetitionDota2 = competitionDota2Grpc;
 
                     return await _client.CreateCompetitionDota2Async(request);

@@ -1,14 +1,12 @@
-﻿using CompetitionService.BusinessLogic.Enums;
-using CompetitionService.BusinessLogic.Models;
-using CompetitionService.BusinessLogic.Models.Competitions;
+﻿using CompetitionService.BusinessLogic.Entities;
+using CompetitionService.BusinessLogic.Models.Enums;
 
 namespace CompetitionService.FunctionalTests.TestData
 {
     public static class CompetitionDota2Samples
     {
         // TODO: remove all empty lines
-        // TODO: _competitionDota2_ValidModel does not match static readonly rule naming. Should be CompetitionDota2ValidModel
-        public static readonly CompetitionDota2 _competitionDota2_ValidModel = new CompetitionDota2()
+        public static readonly CompetitionDota2 CompetitionDota2ValidModel = new CompetitionDota2()
         {
             // TODO: use NBuilder library for data preparation
             Id = Guid.Parse("7a679df5-9d39-45eb-a99b-c53eafc88a0b"),
@@ -25,7 +23,7 @@ namespace CompetitionService.FunctionalTests.TestData
                 StatusType = CompetitionStatusType.Live,
                 Type = CompetitionType.EsportDota2,
                 CoefficientGroups = new List<CoefficientGroup>()
-                    {
+                {
                         new CoefficientGroup()
                         {
                             Id = Guid.Parse("dcd66d95-2c8b-4480-9844-4a9e5f0531c8"),
@@ -82,7 +80,7 @@ namespace CompetitionService.FunctionalTests.TestData
                                 },
                             }
                         }
-                    }
+                }
             }
 
         };

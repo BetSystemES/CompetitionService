@@ -1,12 +1,11 @@
-﻿using CompetitionService.BusinessLogic.Contracts.DataAccess.Providers;
+﻿using CompetitionService.BusinessLogic.Contracts.DataAccess;
+using CompetitionService.BusinessLogic.Contracts.DataAccess.Providers;
 using CompetitionService.BusinessLogic.Contracts.DataAccess.Repositories;
-using CompetitionService.BusinessLogic.Contracts.DataAccess;
 using CompetitionService.BusinessLogic.Contracts.Services;
-using Moq;
+using CompetitionService.BusinessLogic.Entities;
+using CompetitionService.BusinessLogic.Models.Enums;
 using CompetitionService.BusinessLogic.Services;
-using CompetitionService.BusinessLogic.Models.Competitions;
-using CompetitionService.BusinessLogic.Enums;
-using CompetitionService.BusinessLogic.Models;
+using Moq;
 
 namespace CompetitionService.UnitTests.BusinessLogic
 {
@@ -33,7 +32,7 @@ namespace CompetitionService.UnitTests.BusinessLogic
         }
 
         [Fact]
-        public async Task BlockCompetitionBaseById_Should_BlockCompetitionById() //todo: rename
+        public async Task BlockCompetitionBaseById_Should_UpdateAndSaveChanges()
         {
             // Arrange
             var id = Guid.Parse("f3793808-0fc6-4e57-a9ec-20ff7c85ddfc");

@@ -3,8 +3,6 @@ using CompetitionService.Grpc.Infastructure.Validators.Validators;
 using CompetitionService.UnitTests.TestHelpers;
 using FluentAssertions;
 using FluentValidation;
-// TODO: remove unused/sort usings
-using FizzWare.NBuilder;
 using Xunit.Abstractions;
 
 namespace CompetitionService.UnitTests.Validators

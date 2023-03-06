@@ -1,9 +1,8 @@
-﻿using CompetitionService.Grpc.Infastructure.ValidationRules;
+﻿using CompetitionService.Grpc.Extensions;
 using FluentValidation;
 
 namespace CompetitionService.Grpc.Infastructure.Validators
 {
-    // TODO: Rename folder from Infastructure to Infrastructure
     /// <summary>
     /// Validator for <seealso cref="Coefficient"/>
     /// </summary>
@@ -15,6 +14,9 @@ namespace CompetitionService.Grpc.Infastructure.Validators
         private static readonly double _minRateValue = 1;
         private static readonly double _minProbabilityValue = 0;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CoefficientValidator"/> class.
+        /// </summary>
         public CoefficientValidator()
         {
             RuleFor(x => x.Id)

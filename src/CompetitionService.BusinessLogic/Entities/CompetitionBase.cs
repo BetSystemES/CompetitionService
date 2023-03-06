@@ -1,10 +1,9 @@
-﻿using CompetitionService.BusinessLogic.Enums;
+﻿using CompetitionService.BusinessLogic.Models.Enums;
 
-namespace CompetitionService.BusinessLogic.Models.Competitions
+namespace CompetitionService.BusinessLogic.Entities
 {
-    // TODO: Change file location to CompetitionService.BusinessLogic.Entities
     /// <summary>
-    /// competition base entity
+    /// Competition base entity
     /// </summary>
     public class CompetitionBase
     {

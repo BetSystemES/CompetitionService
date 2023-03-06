@@ -1,16 +1,14 @@
 ﻿using CompetitionService.BusinessLogic.Contracts.DataAccess;
 using CompetitionService.BusinessLogic.Contracts.DataAccess.Providers;
 using CompetitionService.BusinessLogic.Contracts.DataAccess.Repositories;
-using CompetitionService.BusinessLogic.Models;
-using CompetitionService.BusinessLogic.Models.Competitions;
+using CompetitionService.BusinessLogic.Entities;
 using CompetitionService.DataAccess.Providers;
 using CompetitionService.DataAccess.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace CompetitionService.DataAccess
+namespace CompetitionService.DataAccess.Extensions
 {
-    // TODO: change file location to CompetitionService.DataAccess.Extensions
     public static class DataAccessServiceExtensions
     {
         public static IServiceCollection AddPostgreSqlContext(this IServiceCollection services,

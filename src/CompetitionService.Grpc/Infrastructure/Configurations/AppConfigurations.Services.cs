@@ -2,13 +2,11 @@
 using CompetitionService.BusinessLogic.Services;
 using CompetitionService.Grpc.Infastructure.Mappings;
 using FluentValidation;
-using BusinessModels = CompetitionService.BusinessLogic.Models;
+using BusinessEntities = CompetitionService.BusinessLogic.Entities;
 
 namespace CompetitionService.Grpc.Infastructure.Configurations
 {
-    // TODO: Rename folder from Infastructure to Infrastructure
-    // TODO: Rename class from AppConfiguration to AppConfigurations
-    public static partial class AppConfiguration
+    public static partial class AppConfigurations
     {
         /// <summary>
         /// Adds the infrastructure services.
@@ -19,7 +17,7 @@ namespace CompetitionService.Grpc.Infastructure.Configurations
         {
             services.AddAutoMapper(typeof(CompetitionServiceProfile).Assembly);
 
-            services.AddScoped<ICompetitionService<BusinessModels.Competitions.CompetitionDota2>, CompetitionDota2Service>();
+            services.AddScoped<ICompetitionService<BusinessEntities.CompetitionDota2>, CompetitionDota2Service>();
             services.AddScoped<ICompetitionBaseService, CompetitionBaseService>();
             services.AddScoped<ICoefficientService, CoefficientService>();
 

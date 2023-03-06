@@ -1,9 +1,8 @@
-﻿using CompetitionService.Grpc.Infastructure.ValidationRules;
+﻿using CompetitionService.Grpc.Extensions;
 using FluentValidation;
 
 namespace CompetitionService.Grpc.Infastructure.Validators
 {
-    // TODO: Rename folder from Infastructure to Infrastructure
     /// <summary>
     /// Validator for <seealso cref="CompetitionDota2"/>
     /// </summary>
@@ -14,6 +13,9 @@ namespace CompetitionService.Grpc.Infastructure.Validators
 
         private static readonly int _minTeamKillAmount = 0;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CompetitionDota2Validtor"/> class.
+        /// </summary>
         public CompetitionDota2Validtor()
         {
             RuleFor(x => x.CompetitionBase)

@@ -1,6 +1,4 @@
-﻿// TODO: remove unused/sort usings
-using System.IO;
-using System.Text;
+﻿using System.Text;
 using Xunit.Abstractions;
 
 namespace CompetitionService.FunctionalTests.Adapters

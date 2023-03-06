@@ -1,14 +1,11 @@
 ﻿using FluentValidation;
 
-namespace CompetitionService.Grpc.Infastructure.ValidationRules
+namespace CompetitionService.Grpc.Extensions
 {
-    // TODO: Rename folder from Infastructure to Infrastructure
-    // TODO: change file location to CashService.GRPC.Extensions
-    // TODO: rename file to ValidationRulesExtensions
     /// <summary>
     /// Validation rule for guid
     /// </summary>
-    public static class GuidValidationRule
+    public static class ValidationRulesExtensions
     {
         /// <summary>
         /// Must the be valid unique identifier.

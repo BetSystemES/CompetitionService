@@ -1,9 +1,8 @@
-﻿using CompetitionService.Grpc.Infastructure.ValidationRules;
+﻿using CompetitionService.Grpc.Extensions;
 using FluentValidation;
 
 namespace CompetitionService.Grpc.Infastructure.Validators
 {
-    // TODO: Rename folder from Infastructure to Infrastructure
     /// <summary>
     /// Validator for <seealso cref="CompetitionBase"/>
     /// </summary>

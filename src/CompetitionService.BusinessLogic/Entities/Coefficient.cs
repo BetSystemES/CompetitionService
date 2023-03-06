@@ -1,8 +1,7 @@
-﻿using CompetitionService.BusinessLogic.Enums;
+﻿using CompetitionService.BusinessLogic.Models.Enums;
 
-namespace CompetitionService.BusinessLogic.Models
+namespace CompetitionService.BusinessLogic.Entities
 {
-    // TODO: Change file location to CompetitionService.BusinessLogic.Entities
     public class Coefficient
     {
         public Guid Id { get; set; }

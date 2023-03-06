@@ -1,4 +1,4 @@
-﻿using CompetitionService.DataAccess;
+﻿using CompetitionService.DataAccess.Extensions;
 using CompetitionService.Grpc.Infastructure.Configurations;
 using Microsoft.EntityFrameworkCore;
 

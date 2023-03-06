@@ -1,12 +1,15 @@
 ﻿using AutoMapper;
 using Google.Protobuf.WellKnownTypes;
 
-using BusinessModels = CompetitionService.BusinessLogic.Models;
-using BusnessEnums = CompetitionService.BusinessLogic.Enums;
+using BusinessEntities = CompetitionService.BusinessLogic.Entities;
+using BusnessEnums = CompetitionService.BusinessLogic.Models.Enums;
 
 namespace CompetitionService.Grpc.Infastructure.Mappings
 {
-    // TODO: Rename folder from Infastructure to Infrastructure
+    /// <summary>
+    /// AutoMapper Profile for competition grpc serivce.
+    /// </summary>
+    /// <seealso cref="AutoMapper.Profile" />
     public class CompetitionServiceProfile : Profile
     {
         public CompetitionServiceProfile()
@@ -30,13 +33,13 @@ namespace CompetitionService.Grpc.Infastructure.Mappings
             CreateMap<BusnessEnums.CompetitionType, CompetitionType>()
                 .ReverseMap();
 
-            CreateMap<BusinessModels.Coefficient, Coefficient>()
+            CreateMap<BusinessEntities.Coefficient, Coefficient>()
                 .ReverseMap();
-            CreateMap<BusinessModels.CoefficientGroup, CoefficientGroup>()
+            CreateMap<BusinessEntities.CoefficientGroup, CoefficientGroup>()
                 .ReverseMap();
-            CreateMap<BusinessModels.Competitions.CompetitionBase, CompetitionBase>()
+            CreateMap<BusinessEntities.CompetitionBase, CompetitionBase>()
                 .ReverseMap();
-            CreateMap<BusinessModels.Competitions.CompetitionDota2, CompetitionDota2>()
+            CreateMap<BusinessEntities.CompetitionDota2, CompetitionDota2>()
                 .ReverseMap();
         }
     }
