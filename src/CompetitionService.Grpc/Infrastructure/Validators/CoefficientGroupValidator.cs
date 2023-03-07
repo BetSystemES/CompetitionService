@@ -1,7 +1,7 @@
 ﻿using CompetitionService.Grpc.Extensions;
 using FluentValidation;
 
-namespace CompetitionService.Grpc.Infastructure.Validators
+namespace CompetitionService.Grpc.Infrastructure.Validators
 {
     /// <summary>
     /// Validator for <seealso cref="CoefficientGroup"/>

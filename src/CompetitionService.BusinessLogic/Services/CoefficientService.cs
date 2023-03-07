@@ -20,7 +20,7 @@ namespace CompetitionService.BusinessLogic.Services
             _repository = repository;
             _context = context;
         }
-        
+
         public async Task<double> DepositToCoefficientById(Guid id, double amount, CancellationToken token)
         {
             var coefficient = await _provider.GetById(id, token);

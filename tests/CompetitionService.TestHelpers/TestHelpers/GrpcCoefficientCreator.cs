@@ -1,19 +1,18 @@
 ﻿using CompetitionService.Grpc;
 using FizzWare.NBuilder;
 
-namespace CompetitionService.UnitTests.TestHelpers
+namespace CompetitionService.TestHelpers.TestHelpers
 {
     /// <summary>
     /// Create <seealso cref="Coefficient"/>
     /// </summary>
-    public static class CoefficientCreator
+    public static class GrpcCoefficientCreator
     {
         private static readonly List<CoefficientStatusType> _validCoefficientStatusTypes = new List<CoefficientStatusType>()
         {
             CoefficientStatusType.Active,
             CoefficientStatusType.Completed,
             CoefficientStatusType.Blocked
-
         };
 
         public static IEnumerable<Coefficient> CreateValidRange(int size = 2)

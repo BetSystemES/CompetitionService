@@ -4,7 +4,7 @@ using Google.Protobuf.WellKnownTypes;
 using BusinessEntities = CompetitionService.BusinessLogic.Entities;
 using BusnessEnums = CompetitionService.BusinessLogic.Models.Enums;
 
-namespace CompetitionService.Grpc.Infastructure.Mappings
+namespace CompetitionService.Grpc.Infrastructure.Mappings
 {
     /// <summary>
     /// AutoMapper Profile for competition grpc serivce.

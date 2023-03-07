@@ -112,7 +112,6 @@ namespace CompetitionService.UnitTests.BusinessLogic
                         }
                     }
                 }
-
             };
 
             // Act
@@ -208,7 +207,6 @@ namespace CompetitionService.UnitTests.BusinessLogic
                         }
                     }
                 }
-
             };
 
             _mockCompetitionProvider.Setup(_ => _.GetById(
@@ -306,7 +304,6 @@ namespace CompetitionService.UnitTests.BusinessLogic
                         }
                     }
                 }
-
             };
 
             var competitions = new List<CompetitionDota2>()
@@ -413,7 +410,6 @@ namespace CompetitionService.UnitTests.BusinessLogic
                         }
                     }
                 }
-
             };
 
             // Act

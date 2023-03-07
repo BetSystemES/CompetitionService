@@ -1,12 +1,12 @@
 ﻿using CompetitionService.Grpc;
 using FizzWare.NBuilder;
 
-namespace CompetitionService.UnitTests.TestHelpers
+namespace CompetitionService.TestHelpers.TestHelpers
 {
     /// <summary>
     /// Create <seealso cref="CoefficientGroup"/>
     /// </summary>
-    public static class CoefficientGroupCreator
+    public static class GrpcCoefficientGroupCreator
     {
         private static readonly List<CoefficientGroupType> _validCoefficientGroupType = new List<CoefficientGroupType>()
         {
@@ -35,7 +35,7 @@ namespace CompetitionService.UnitTests.TestHelpers
                 .With(x => x.Type = Pick<CoefficientGroupType>.RandomItemFrom(_validCoefficientGroupType))
                 .Build();
 
-            coefficientGroup.Coefficients.AddRange(CoefficientCreator.CreateValidRange());
+            coefficientGroup.Coefficients.AddRange(GrpcCoefficientCreator.CreateValidRange());
 
             return coefficientGroup;
         }

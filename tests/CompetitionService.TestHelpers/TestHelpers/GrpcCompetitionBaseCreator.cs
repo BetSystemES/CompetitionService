@@ -2,9 +2,9 @@
 using FizzWare.NBuilder;
 using Google.Protobuf.WellKnownTypes;
 
-namespace CompetitionService.UnitTests.TestHelpers
+namespace CompetitionService.TestHelpers.TestHelpers
 {
-    public static class CompetitionBaseCreator
+    public static class GrpcCompetitionBaseCreator
     {
         private static readonly List<CompetitionType> _validCompetitionTypes = new List<CompetitionType>()
         {
@@ -30,7 +30,7 @@ namespace CompetitionService.UnitTests.TestHelpers
                 .With(x => x.Type = Pick<CompetitionType>.RandomItemFrom(_validCompetitionTypes))
                 .Build();
 
-            competitionBase.CoefficientGroups.AddRange(CoefficientGroupCreator.CreateValidRange());
+            competitionBase.CoefficientGroups.AddRange(GrpcCoefficientGroupCreator.CreateValidRange());
 
             return competitionBase;
         }

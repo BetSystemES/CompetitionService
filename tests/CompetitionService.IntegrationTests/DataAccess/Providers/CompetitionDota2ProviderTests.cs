@@ -101,7 +101,6 @@ namespace CompetitionService.IntegrationTests.DataAccess.Providers
                         }
                     }
                 }
-
             };
 
             // Act
@@ -194,7 +193,6 @@ namespace CompetitionService.IntegrationTests.DataAccess.Providers
                         }
                     }
                 }
-
             };
 
             // Act

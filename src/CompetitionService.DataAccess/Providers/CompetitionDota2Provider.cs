@@ -1,9 +1,5 @@
-﻿using System.Drawing;
-using System.Runtime.CompilerServices;
-using System.Security.Cryptography.X509Certificates;
-using CompetitionService.BusinessLogic.Contracts.DataAccess.Providers;
+﻿using CompetitionService.BusinessLogic.Contracts.DataAccess.Providers;
 using CompetitionService.BusinessLogic.Entities;
-using CompetitionService.BusinessLogic.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace CompetitionService.DataAccess.Providers

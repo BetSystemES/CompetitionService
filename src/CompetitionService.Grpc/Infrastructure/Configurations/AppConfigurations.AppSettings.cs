@@ -1,4 +1,4 @@
-﻿namespace CompetitionService.Grpc.Infastructure.Configurations
+﻿namespace CompetitionService.Grpc.Infrastructure.Configurations
 {
     /// <summary>
     ///   Add environment variables to <seealso cref="WebApplicationBuilder"/>

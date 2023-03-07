@@ -1,10 +1,9 @@
 ﻿using CompetitionService.BusinessLogic.Contracts.Services;
 using CompetitionService.BusinessLogic.Services;
-using CompetitionService.Grpc.Infastructure.Mappings;
-using FluentValidation;
+using CompetitionService.Grpc.Infrastructure.Mappings;
 using BusinessEntities = CompetitionService.BusinessLogic.Entities;
 
-namespace CompetitionService.Grpc.Infastructure.Configurations
+namespace CompetitionService.Grpc.Infrastructure.Configurations
 {
     public static partial class AppConfigurations
     {
@@ -20,9 +19,6 @@ namespace CompetitionService.Grpc.Infastructure.Configurations
             services.AddScoped<ICompetitionService<BusinessEntities.CompetitionDota2>, CompetitionDota2Service>();
             services.AddScoped<ICompetitionBaseService, CompetitionBaseService>();
             services.AddScoped<ICoefficientService, CoefficientService>();
-
-            // TODO: Add new AppConfigurations partial class for fluent validation
-            services.AddValidatorsFromAssembly(typeof(Program).Assembly);
 
             return services;
         }

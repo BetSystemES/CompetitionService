@@ -82,7 +82,6 @@ namespace CompetitionService.FunctionalTests.TestData
                         }
                 }
             }
-
         };
     }
 }

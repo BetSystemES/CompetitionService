@@ -1,8 +1,4 @@
 ﻿// TODO: remove unused/sort usings
-using System;
-using System.Net.Http;
-using System.Threading;
-using System.Threading.Tasks;
 using Grpc.Net.Client;
 
 namespace CompetitionService.IntegrationTests
