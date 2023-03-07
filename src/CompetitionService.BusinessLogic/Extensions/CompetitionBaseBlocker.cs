@@ -1,5 +1,5 @@
-﻿using CompetitionService.BusinessLogic.Enums;
-using CompetitionService.BusinessLogic.Models.Competitions;
+﻿using CompetitionService.BusinessLogic.Entities;
+using CompetitionService.BusinessLogic.Models.Enums;
 
 namespace CompetitionService.BusinessLogic.Extensions
 {

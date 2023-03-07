@@ -1,5 +1,6 @@
 ﻿using System.CommandLine;
 using CompetitionService.DataAccess;
+using CompetitionService.DataAccess.Extensions;
 using CompetitionService.DatabaseMigrator.Extensions;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;

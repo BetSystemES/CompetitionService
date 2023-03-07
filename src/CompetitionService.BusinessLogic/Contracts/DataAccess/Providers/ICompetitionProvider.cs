@@ -5,6 +5,5 @@
         Task<T?> GetById(Guid id, CancellationToken token);
 
         Task<List<T>> GetRange(int page, int pageSize, CancellationToken token);
-
     }
 }

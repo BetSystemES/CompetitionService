@@ -21,7 +21,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CompetitionService.UnitTest
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CompetitionService.DatabaseMigrator", "src\CompetitionService.DatabaseMigrator\CompetitionService.DatabaseMigrator.csproj", "{EE0BEA31-834B-4906-97E2-DE0A58245614}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompetitionService.FunctionalTests", "tests\CompetitionService.FunctionalTests\CompetitionService.FunctionalTests.csproj", "{6514CD10-694E-4083-AA2F-507191DE1E97}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CompetitionService.FunctionalTests", "tests\CompetitionService.FunctionalTests\CompetitionService.FunctionalTests.csproj", "{6514CD10-694E-4083-AA2F-507191DE1E97}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompetitionService.TestHelpers", "tests\CompetitionService.TestHelpers\CompetitionService.TestHelpers.csproj", "{46CD3140-E391-461F-ABCB-8B9815A06882}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +59,10 @@ Global
 		{6514CD10-694E-4083-AA2F-507191DE1E97}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6514CD10-694E-4083-AA2F-507191DE1E97}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6514CD10-694E-4083-AA2F-507191DE1E97}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46CD3140-E391-461F-ABCB-8B9815A06882}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46CD3140-E391-461F-ABCB-8B9815A06882}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46CD3140-E391-461F-ABCB-8B9815A06882}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46CD3140-E391-461F-ABCB-8B9815A06882}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

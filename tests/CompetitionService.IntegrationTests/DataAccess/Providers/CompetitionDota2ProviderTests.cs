@@ -1,14 +1,12 @@
 ﻿using CompetitionService.BusinessLogic.Contracts.DataAccess;
 using CompetitionService.BusinessLogic.Contracts.DataAccess.Providers;
 using CompetitionService.BusinessLogic.Contracts.DataAccess.Repositories;
-using CompetitionService.BusinessLogic.Enums;
-using CompetitionService.BusinessLogic.Models;
-using CompetitionService.BusinessLogic.Models.Competitions;
+using CompetitionService.BusinessLogic.Entities;
+using CompetitionService.BusinessLogic.Models.Enums;
 using FluentAssertions;
 using Microsoft.Extensions.DependencyInjection;
 
-// TODO: wrong namespace name CompetitionService.IntegrationTests.DataAccess.Repositories. Should be CompetitionService.IntegrationTests.DataAccess.Providers
-namespace CompetitionService.IntegrationTests.DataAccess.Repositories
+namespace CompetitionService.IntegrationTests.DataAccess.Providers
 {
     public class CompetitionDota2ProviderTests : IClassFixture<GrpcAppFactory>, IDisposable
     {
@@ -103,7 +101,6 @@ namespace CompetitionService.IntegrationTests.DataAccess.Repositories
                         }
                     }
                 }
-
             };
 
             // Act
@@ -196,7 +193,6 @@ namespace CompetitionService.IntegrationTests.DataAccess.Repositories
                         }
                     }
                 }
-
             };
 
             // Act

@@ -1,23 +1,15 @@
-﻿// TODO: remove unused/sort usings
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CompetitionService.BusinessLogic.Contracts.DataAccess;
 using CompetitionService.BusinessLogic.Contracts.DataAccess.Providers;
 using CompetitionService.BusinessLogic.Contracts.DataAccess.Repositories;
-using CompetitionService.BusinessLogic.Contracts.DataAccess;
 using CompetitionService.BusinessLogic.Contracts.Services;
-using Moq;
-using CompetitionService.BusinessLogic.Models.Competitions;
+using CompetitionService.BusinessLogic.Entities;
+using CompetitionService.BusinessLogic.Models.Enums;
 using CompetitionService.BusinessLogic.Services;
-using CompetitionService.BusinessLogic.Enums;
-using CompetitionService.BusinessLogic.Models;
 using FluentAssertions;
+using Moq;
 
 namespace CompetitionService.UnitTests.BusinessLogic
 {
-    // TODO: remove all empty lines
     public class CompetitionDota2ServiceTests
     {
         private static readonly CancellationToken _ct = CancellationToken.None;
@@ -120,7 +112,6 @@ namespace CompetitionService.UnitTests.BusinessLogic
                         }
                     }
                 }
-
             };
 
             // Act
@@ -216,7 +207,6 @@ namespace CompetitionService.UnitTests.BusinessLogic
                         }
                     }
                 }
-
             };
 
             _mockCompetitionProvider.Setup(_ => _.GetById(
@@ -314,7 +304,6 @@ namespace CompetitionService.UnitTests.BusinessLogic
                         }
                     }
                 }
-
             };
 
             var competitions = new List<CompetitionDota2>()
@@ -334,7 +323,7 @@ namespace CompetitionService.UnitTests.BusinessLogic
                 .Returns(Task.FromResult(competitions));
 
             // Act
-            var actualCompetitions=  await _competitionService.GetRange(page, pageSize, _ct);
+            var actualCompetitions = await _competitionService.GetRange(page, pageSize, _ct);
 
             // Assert
             actualCompetitions.Should()
@@ -421,7 +410,6 @@ namespace CompetitionService.UnitTests.BusinessLogic
                         }
                     }
                 }
-
             };
 
             // Act

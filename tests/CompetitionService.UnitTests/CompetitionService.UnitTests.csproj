@@ -34,6 +34,7 @@
     <ProjectReference Include="..\..\src\CompetitionService.BusinessLogic\CompetitionService.BusinessLogic.csproj" />
     <ProjectReference Include="..\..\src\CompetitionService.DataAccess\CompetitionService.DataAccess.csproj" />
     <ProjectReference Include="..\..\src\CompetitionService.Grpc\CompetitionService.Grpc.csproj" />
+    <ProjectReference Include="..\CompetitionService.TestHelpers\CompetitionService.TestHelpers.csproj" />
   </ItemGroup>
 
 </Project>

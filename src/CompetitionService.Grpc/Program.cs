@@ -1,5 +1,5 @@
-﻿using CompetitionService.DataAccess;
-using CompetitionService.Grpc.Infastructure.Configurations;
+﻿using CompetitionService.DataAccess.Extensions;
+using CompetitionService.Grpc.Infrastructure.Configurations;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args).
@@ -13,6 +13,7 @@ builder.Services
     .AddInfrastructureServices()
     .AddProviders()
     .AddRepositories()
+    .AddValidators()
     .AddPostgreSqlContext(options =>
     {
         options.UseNpgsql(configuration.GetConnectionString("CompetitionDb"));
@@ -24,8 +25,8 @@ app.MapGrpcService<CompetitionService.Grpc.Services.CompetitionService>();
 
 app.Run();
 
-
 namespace CompetitionService.Grpc
 {
-    public partial class Program { }
+    public partial class Program
+    { }
 }

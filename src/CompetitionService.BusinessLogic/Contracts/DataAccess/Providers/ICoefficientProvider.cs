@@ -1,4 +1,4 @@
-﻿using CompetitionService.BusinessLogic.Models;
+﻿using CompetitionService.BusinessLogic.Entities;
 
 namespace CompetitionService.BusinessLogic.Contracts.DataAccess.Providers
 {

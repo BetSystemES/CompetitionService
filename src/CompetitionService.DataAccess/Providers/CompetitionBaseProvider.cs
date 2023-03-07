@@ -1,5 +1,5 @@
 ﻿using CompetitionService.BusinessLogic.Contracts.DataAccess.Providers;
-using CompetitionService.BusinessLogic.Models.Competitions;
+using CompetitionService.BusinessLogic.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace CompetitionService.DataAccess.Providers

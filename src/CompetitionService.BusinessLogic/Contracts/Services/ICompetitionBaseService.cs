@@ -1,4 +1,4 @@
-﻿using CompetitionService.BusinessLogic.Models.Competitions;
+﻿using CompetitionService.BusinessLogic.Entities;
 
 namespace CompetitionService.BusinessLogic.Contracts.Services
 {

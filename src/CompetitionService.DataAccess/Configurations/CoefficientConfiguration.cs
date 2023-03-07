@@ -1,4 +1,4 @@
-﻿using CompetitionService.BusinessLogic.Models;
+﻿using CompetitionService.BusinessLogic.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

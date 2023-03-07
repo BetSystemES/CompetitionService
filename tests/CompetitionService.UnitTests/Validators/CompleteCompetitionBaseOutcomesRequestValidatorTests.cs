@@ -1,10 +1,8 @@
 ﻿using CompetitionService.Grpc;
-using CompetitionService.Grpc.Infastructure.Validators.Validators;
-using CompetitionService.UnitTests.TestHelpers;
+using CompetitionService.Grpc.Infrastructure.Validators.Validators;
+using CompetitionService.TestHelpers.TestHelpers;
 using FluentAssertions;
 using FluentValidation;
-// TODO: remove unused/sort usings
-using FizzWare.NBuilder;
 using Xunit.Abstractions;
 
 namespace CompetitionService.UnitTests.Validators
@@ -23,7 +21,7 @@ namespace CompetitionService.UnitTests.Validators
         [Fact]
         public async Task CompleteCompetitionBaseOutcomesRequest_Should_Be_Valid()
         {
-            var competitionBase = CompetitionBaseCreator.CreateValid();
+            var competitionBase = GrpcCompetitionBaseCreator.CreateValid();
 
             // Arrange
             var model = new CompleteCompetitionBaseOutcomesRequest()
