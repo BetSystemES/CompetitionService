@@ -1,9 +1,7 @@
-﻿// TODO: remove unused/sort usings
-using AutoMapper;
+﻿using AutoMapper;
 using Microsoft.Extensions.DependencyInjection;
 
-// TODO: rename Infastructure folder and namespace to Infrastructure
-namespace CompetitionService.IntegrationTests.Infastructure
+namespace CompetitionService.IntegrationTests.Infrastructure
 {
     public class AutomapperMappingTests : IClassFixture<GrpcAppFactory>, IDisposable
     {

@@ -5,7 +5,6 @@ namespace CompetitionService.FunctionalTests.TestData
 {
     public static class CompetitionDota2Samples
     {
-        // TODO: remove all empty lines
         public static readonly CompetitionDota2 CompetitionDota2ValidModel = new CompetitionDota2()
         {
             // TODO: use NBuilder library for data preparation

@@ -8,7 +8,6 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace CompetitionService.IntegrationTests.DataAccess.Repositories
 {
-    // TODO: remove all empty lines
     public class CompetitionDota2RepositoryTests : IClassFixture<GrpcAppFactory>, IDisposable
     {
         private static readonly CancellationToken _ct = CancellationToken.None;
