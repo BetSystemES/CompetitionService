@@ -2,12 +2,13 @@
 using CompetitionService.BusinessLogic.Contracts.DataAccess.Providers;
 using CompetitionService.BusinessLogic.Contracts.DataAccess.Repositories;
 using CompetitionService.BusinessLogic.Entities;
-using CompetitionService.BusinessLogic.Models.Enums;
+using CompetitionService.BusinessLogic.Enums;
 using FluentAssertions;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace CompetitionService.IntegrationTests.DataAccess.Repositories
 {
+    // TODO: remove all empty lines
     public class CompetitionDota2RepositoryTests : IClassFixture<GrpcAppFactory>, IDisposable
     {
         private static readonly CancellationToken _ct = CancellationToken.None;

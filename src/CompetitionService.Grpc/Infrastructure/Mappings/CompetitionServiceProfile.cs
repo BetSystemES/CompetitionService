@@ -2,7 +2,7 @@
 using Google.Protobuf.WellKnownTypes;
 
 using BusinessEntities = CompetitionService.BusinessLogic.Entities;
-using BusnessEnums = CompetitionService.BusinessLogic.Models.Enums;
+using BusnessEnums = CompetitionService.BusinessLogic.Enums;
 
 namespace CompetitionService.Grpc.Infrastructure.Mappings
 {
