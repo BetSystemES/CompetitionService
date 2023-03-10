@@ -1,11 +1,12 @@
-﻿using CompetitionService.BusinessLogic.Models.BetServiceModels.Enums;
+﻿using CompetitionService.BusinessLogic.Enums;
+using CompetitionService.BusinessLogic.Models.BetServiceModels.Enums;
 
 namespace CompetitionService.BusinessLogic.Models.BetServiceModels.Models
 {
     /// <summary>
     /// Bet status update model.
     /// </summary>
-    public class BetStatusUpdateModel
+    public class BetServiceBetStatusUpdateModel
     {
         /// <summary>
         /// Coefficient identifier.
@@ -15,6 +16,6 @@ namespace CompetitionService.BusinessLogic.Models.BetServiceModels.Models
         /// <summary>
         /// Bet status type.
         /// </summary>
-        public BetStatusType StatusType { get; set; }
+        public BetServiceBetStatusType StatusType { get; set; }
     }
 }

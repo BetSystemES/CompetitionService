@@ -3,7 +3,7 @@
     /// <summary>
     /// Bet payout status.
     /// </summary>
-    public enum BetPayoutStatus
+    public enum BetServiceBetPayoutStatus
     {
         /// <summary>
         /// The unspecified

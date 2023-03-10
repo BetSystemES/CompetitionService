@@ -3,7 +3,7 @@
     /// <summary>
     /// Bet status type.
     /// </summary>
-    public enum BetStatusType
+    public enum BetServiceBetStatusType
     {
         /// <summary>
         /// The unspecified

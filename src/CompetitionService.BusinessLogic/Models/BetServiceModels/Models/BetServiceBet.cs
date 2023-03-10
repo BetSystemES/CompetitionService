@@ -5,7 +5,7 @@ namespace CompetitionService.BusinessLogic.Models.BetServiceModels.Models
     /// <summary>
     /// Bet business model representation.
     /// </summary>
-    public class Bet
+    public class BetServiceBet
     {
         /// <summary>
         /// Identifier.
@@ -40,11 +40,11 @@ namespace CompetitionService.BusinessLogic.Models.BetServiceModels.Models
         /// <summary>
         /// Bet paid type.
         /// </summary>
-        public BetPayoutStatus PayoutStatus { get; set; }
+        public BetServiceBetPayoutStatus PayoutStatus { get; set; }
 
         /// <summary>
         /// Bet status type.
         /// </summary>
-        public BetStatusType BetStatusType { get; set; }
+        public BetServiceBetStatusType BetStatusType { get; set; }
     }
 }

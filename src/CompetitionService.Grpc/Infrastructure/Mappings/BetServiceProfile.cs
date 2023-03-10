@@ -1,11 +1,11 @@
 ﻿using AutoMapper;
-using CompetitionService.BusinessLogic.Models.BetServiceModels.Enums;
-using CompetitionService.BusinessLogic.Models.BetServiceModels.Models;
 using Google.Protobuf.WellKnownTypes;
 using BusinessModels = CompetitionService.BusinessLogic.Models.BetServiceModels.Models;
 using BusinessEnums = CompetitionService.BusinessLogic.Models.BetServiceModels.Enums;
+using BetService.Grpc;
+using CompetitionService.BusinessLogic.Models.BetServiceModels.Models;
 
-namespace BetService.Grpc.Infrastructure.Mappings
+namespace CompetitionService.Grpc.Infrastructure.Mappings
 {
     /// <summary>Profile of grpc layer</summary>
     public class BetServiceProfile : Profile
@@ -20,14 +20,14 @@ namespace BetService.Grpc.Infrastructure.Mappings
                 .ConvertUsing(x => Timestamp.FromDateTime(x));
             CreateMap<Timestamp, DateTime>()
                 .ConvertUsing(x => x.ToDateTime());
-            CreateMap<Bet, Bet>()
+            CreateMap<BusinessModels.BetServiceBet, Bet>()
                 .ReverseMap();
-            CreateMap<BetStatusUpdateModel, BetStatusUpdateModel>()
+            CreateMap<CompetitionService.BusinessLogic.Models.BetStatusUpdateModel, BetStatusUpdateModel>()
                 .ReverseMap();
-            CreateMap<BetCreateModel, Bet>();
-            CreateMap<BetPayoutStatus, BetPayoutStatus>()
+            CreateMap<BetCreateModel, BusinessModels.BetServiceBet>();
+            CreateMap<BusinessEnums.BetServiceBetPayoutStatus, BetPayoutStatus>()
                 .ReverseMap();
-            CreateMap<BetStatusType, BetStatusType>()
+            CreateMap<BusinessEnums.BetServiceBetStatusType, BetStatusType>()
                 .ReverseMap();
         }
     }
