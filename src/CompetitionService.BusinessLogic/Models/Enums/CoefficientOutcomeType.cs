@@ -1,4 +1,4 @@
-﻿namespace CompetitionService.BusinessLogic.Enums
+﻿namespace CompetitionService.BusinessLogic.Models.Enums
 {
     /// <summary>
     /// Coefficient outcome type.

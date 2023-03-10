@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using CompetitionService.BusinessLogic.Models.Enums;
 using Google.Protobuf.WellKnownTypes;
 
 using BusinessEntities = CompetitionService.BusinessLogic.Entities;
@@ -24,15 +25,15 @@ namespace CompetitionService.Grpc.Infrastructure.Mappings
             CreateMap<Timestamp, DateTime>()
                 .ConvertUsing(x => x.ToDateTime());
 
-            CreateMap<BusnessEnums.CoefficientGroupType, CoefficientGroupType>()
+            CreateMap<CompetitionService.BusinessLogic.Models.Enums.CoefficientGroupType, CoefficientGroupType>()
                 .ReverseMap();
-            CreateMap<BusnessEnums.CoefficientStatusType, CoefficientStatusType>()
+            CreateMap<CompetitionService.BusinessLogic.Models.Enums.CoefficientStatusType, CoefficientStatusType>()
                 .ReverseMap();
-            CreateMap<BusnessEnums.CoefficientOutcomeType, CoefficientOutcomeType>()
+            CreateMap<CompetitionService.BusinessLogic.Models.Enums.CoefficientOutcomeType, CoefficientOutcomeType>()
                 .ReverseMap();
-            CreateMap<BusnessEnums.CompetitionStatusType, CompetitionStatusType>()
+            CreateMap<CompetitionService.BusinessLogic.Models.Enums.CompetitionStatusType, CompetitionStatusType>()
                 .ReverseMap();
-            CreateMap<BusnessEnums.CompetitionType, CompetitionType>()
+            CreateMap<CompetitionService.BusinessLogic.Models.Enums.CompetitionType, CompetitionType>()
                 .ReverseMap();
 
             CreateMap<BusinessEntities.Coefficient, Coefficient>()
