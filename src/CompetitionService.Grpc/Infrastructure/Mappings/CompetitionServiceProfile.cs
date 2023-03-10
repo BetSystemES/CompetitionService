@@ -24,15 +24,15 @@ namespace CompetitionService.Grpc.Infrastructure.Mappings
             CreateMap<Timestamp, DateTime>()
                 .ConvertUsing(x => x.ToDateTime());
 
-            CreateMap<BusnessEnums.CoefficientGroupType, CoefficientGroupType>()
+            CreateMap<CompetitionService.BusinessLogic.Models.Enums.CoefficientGroupType, CoefficientGroupType>()
                 .ReverseMap();
-            CreateMap<BusnessEnums.CoefficientStatusType, CoefficientStatusType>()
+            CreateMap<CompetitionService.BusinessLogic.Models.Enums.CoefficientStatusType, CoefficientStatusType>()
                 .ReverseMap();
-            CreateMap<BusnessEnums.CoefficientOutcomeType, CoefficientOutcomeType>()
+            CreateMap<CompetitionService.BusinessLogic.Models.Enums.CoefficientOutcomeType, CoefficientOutcomeType>()
                 .ReverseMap();
-            CreateMap<BusnessEnums.CompetitionStatusType, CompetitionStatusType>()
+            CreateMap<CompetitionService.BusinessLogic.Models.Enums.CompetitionStatusType, CompetitionStatusType>()
                 .ReverseMap();
-            CreateMap<BusnessEnums.CompetitionType, CompetitionType>()
+            CreateMap<CompetitionService.BusinessLogic.Models.Enums.CompetitionType, CompetitionType>()
                 .ReverseMap();
 
             CreateMap<CompetitionService.BusinessLogic.Models.Entities.Coefficient, Coefficient>()

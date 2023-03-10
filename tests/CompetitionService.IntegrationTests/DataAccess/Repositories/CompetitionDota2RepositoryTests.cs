@@ -1,8 +1,8 @@
 ﻿using CompetitionService.BusinessLogic.Contracts.DataAccess;
 using CompetitionService.BusinessLogic.Contracts.DataAccess.Providers;
 using CompetitionService.BusinessLogic.Contracts.DataAccess.Repositories;
-using CompetitionService.BusinessLogic.Enums;
 using CompetitionService.BusinessLogic.Models.Entities;
+using CompetitionService.BusinessLogic.Models.Enums;
 using FluentAssertions;
 using Microsoft.Extensions.DependencyInjection;
 

@@ -2,8 +2,8 @@
 using CompetitionService.BusinessLogic.Contracts.DataAccess.Providers;
 using CompetitionService.BusinessLogic.Contracts.DataAccess.Repositories;
 using CompetitionService.BusinessLogic.Contracts.Services;
-using CompetitionService.BusinessLogic.Enums;
 using CompetitionService.BusinessLogic.Models.Entities;
+using CompetitionService.BusinessLogic.Models.Enums;
 using CompetitionService.BusinessLogic.Services;
 using FluentAssertions;
 using Moq;
