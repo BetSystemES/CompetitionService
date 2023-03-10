@@ -4,6 +4,7 @@ using BusinessModels = CompetitionService.BusinessLogic.Models.BetServiceModels.
 using BusinessEnums = CompetitionService.BusinessLogic.Models.BetServiceModels.Enums;
 using BetService.Grpc;
 using CompetitionService.BusinessLogic.Models.BetServiceModels.Models;
+using CompetitionService.BusinessLogic.Models;
 
 namespace CompetitionService.Grpc.Infrastructure.Mappings
 {
@@ -22,12 +23,17 @@ namespace CompetitionService.Grpc.Infrastructure.Mappings
                 .ConvertUsing(x => x.ToDateTime());
             CreateMap<BusinessModels.BetServiceBet, Bet>()
                 .ReverseMap();
-            CreateMap<CompetitionService.BusinessLogic.Models.BetStatusUpdateModel, BetStatusUpdateModel>()
+            CreateMap<BusinessModels.BetServiceBetStatusUpdateModel, BetStatusUpdateModel>()
                 .ReverseMap();
             CreateMap<BetCreateModel, BusinessModels.BetServiceBet>();
             CreateMap<BusinessEnums.BetServiceBetPayoutStatus, BetPayoutStatus>()
                 .ReverseMap();
             CreateMap<BusinessEnums.BetServiceBetStatusType, BetStatusType>()
+                .ReverseMap();
+            CreateMap<BetServiceBetStatusUpdateModel, CoefficientStatus>()
+                .ForMember(dest => dest.OutcomeType,
+                    opt =>
+                        opt.MapFrom(src => src.StatusType))
                 .ReverseMap();
         }
     }

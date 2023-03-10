@@ -1,7 +1,12 @@
 ﻿using AutoMapper;
+using BetService.Grpc;
 using CompetitionService.BusinessLogic.Contracts.Services;
+using CompetitionService.BusinessLogic.Extensions;
+using CompetitionService.BusinessLogic.Models.BetServiceModels.Models;
+using CompetitionService.Grpc.Extensions;
 using Grpc.Core;
-
+using Grpc.Net.ClientFactory;
+using static BetService.Grpc.BetService;
 using CompetitionBusinessEntities = CompetitionService.BusinessLogic.Entities;
 
 namespace CompetitionService.Grpc.Services
@@ -12,17 +17,20 @@ namespace CompetitionService.Grpc.Services
         private readonly ICoefficientService _coefficientService;
         private readonly ICompetitionBaseService _competitionBaseService;
         private readonly IMapper _mapper;
+        private readonly GrpcClientFactory _grpcClientFactory;
 
         public CompetitionService(
             ICompetitionService<CompetitionBusinessEntities.CompetitionDota2> competitionDota2Service,
             ICoefficientService coefficientService,
             ICompetitionBaseService competitionBaseService,
-            IMapper mapper)
+            IMapper mapper,
+            GrpcClientFactory grpcClientFactory)
         {
             _competitionDota2Service = competitionDota2Service;
             _coefficientService = coefficientService;
             _competitionBaseService = competitionBaseService;
             _mapper = mapper;
+            _grpcClientFactory = grpcClientFactory;
         }
 
         public override async Task<CreateCompetitionDota2Response> CreateCompetitionDota2(CreateCompetitionDota2Request request, ServerCallContext context)
@@ -88,6 +96,16 @@ namespace CompetitionService.Grpc.Services
             var completedCompetitionBase = _mapper.Map<CompetitionBusinessEntities.CompetitionBase>(request.CompetitionBase);
 
             await _competitionBaseService.CompleteCompetitionBaseOutcomes(completedCompetitionBase, token);
+
+            var updateModels = _mapper.Map<IEnumerable<BetServiceBetStatusUpdateModel>>(completedCompetitionBase.ToBetStatusUpdateModels());
+            var grpcUpdateModels = _mapper.Map<IEnumerable<BetStatusUpdateModel>>(updateModels);
+
+            var client = _grpcClientFactory.GetGrpcClient<BetServiceClient>();
+
+            var requestUpdateStatuses = new UpdateBetStatusesRequest();
+            requestUpdateStatuses.BetStatusUpdateModels.AddRange(grpcUpdateModels);
+
+            await client.UpdateBetStatusesAsync(requestUpdateStatuses);
 
             var response = new CompleteCompetitionBaseOutcomesResponse();
 
