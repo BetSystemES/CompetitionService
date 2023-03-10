@@ -1,6 +1,6 @@
 ﻿using FluentValidation;
 
-namespace CompetitionService.Grpc.Infrastructure.Validators.Validators
+namespace CompetitionService.Grpc.Infrastructure.Validators.RequestValidators
 {
     /// <summary>
     /// Validator for <seealso cref="UpdateCompetitionDota2Request"/>

@@ -94,6 +94,14 @@ enum CoefficientStatusType {
   COEFFICIENT_STATUS_TYPE_BLOCKED = 3;
 }
 
+enum CoefficientOutcomeType {
+  COEFFICIENT_OUTCOME_TYPE_UNSPECIFIED = 0;
+  COEFFICIENT_OUTCOME_TYPE_WIN = 1;
+  COEFFICIENT_OUTCOME_TYPE_LOSE = 2;
+  COEFFICIENT_OUTCOME_TYPE_CANCELED = 3;
+  COEFFICIENT_OUTCOME_TYPE_BLOCKED = 4;
+}
+
 message CompetitionDota2 {
   string id = 1;
   string team1_id = 2;
@@ -126,4 +134,5 @@ message Coefficient {
   CoefficientStatusType status_type = 4;
   double amount = 5;
   double probability = 6;
+  CoefficientOutcomeType outcome_type = 7;
 }

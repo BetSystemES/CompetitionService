@@ -19,5 +19,7 @@ namespace CompetitionService.BusinessLogic.Entities
         public double Amount { get; set; }
 
         public double Probability { get; set; }
+
+        public CoefficientOutcomeType OutcomeType { get; set; }
     }
 }
