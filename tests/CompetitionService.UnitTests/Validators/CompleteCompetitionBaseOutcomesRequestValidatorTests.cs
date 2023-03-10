@@ -1,5 +1,5 @@
 ﻿using CompetitionService.Grpc;
-using CompetitionService.Grpc.Infrastructure.Validators.Validators;
+using CompetitionService.Grpc.Infrastructure.Validators.RequestValidators;
 using CompetitionService.TestHelpers.TestHelpers;
 using FluentAssertions;
 using FluentValidation;
