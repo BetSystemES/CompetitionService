@@ -35,13 +35,13 @@ namespace CompetitionService.Grpc.Infrastructure.Mappings
             CreateMap<BusnessEnums.CompetitionType, CompetitionType>()
                 .ReverseMap();
 
-            CreateMap<BusinessEntities.Coefficient, Coefficient>()
+            CreateMap<CompetitionService.BusinessLogic.Models.Entities.Coefficient, Coefficient>()
                 .ReverseMap();
-            CreateMap<BusinessEntities.CoefficientGroup, CoefficientGroup>()
+            CreateMap<CompetitionService.BusinessLogic.Models.Entities.CoefficientGroup, CoefficientGroup>()
                 .ReverseMap();
-            CreateMap<BusinessEntities.CompetitionBase, CompetitionBase>()
+            CreateMap<CompetitionService.BusinessLogic.Models.Entities.CompetitionBase, CompetitionBase>()
                 .ReverseMap();
-            CreateMap<BusinessEntities.CompetitionDota2, CompetitionDota2>()
+            CreateMap<CompetitionService.BusinessLogic.Models.Entities.CompetitionDota2, CompetitionDota2>()
                 .ReverseMap();
         }
     }

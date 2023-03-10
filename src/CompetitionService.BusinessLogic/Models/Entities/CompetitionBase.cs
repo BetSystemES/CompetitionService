@@ -1,6 +1,6 @@
 ﻿using CompetitionService.BusinessLogic.Enums;
 
-namespace CompetitionService.BusinessLogic.Entities
+namespace CompetitionService.BusinessLogic.Models.Entities
 {
     /// <summary>
     /// Competition base entity

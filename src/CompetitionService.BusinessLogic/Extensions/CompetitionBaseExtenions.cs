@@ -1,6 +1,6 @@
-﻿using CompetitionService.BusinessLogic.Entities;
-using CompetitionService.BusinessLogic.Models;
+﻿using CompetitionService.BusinessLogic.Models;
 using CompetitionService.BusinessLogic.Models.BetServiceModels.Models;
+using CompetitionService.BusinessLogic.Models.Entities;
 
 namespace CompetitionService.BusinessLogic.Extensions
 {

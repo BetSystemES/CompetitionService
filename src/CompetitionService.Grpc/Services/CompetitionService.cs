@@ -13,14 +13,14 @@ namespace CompetitionService.Grpc.Services
 {
     public class CompetitionService : Grpc.CompetitionService.CompetitionServiceBase
     {
-        private readonly ICompetitionService<CompetitionBusinessEntities.CompetitionDota2> _competitionDota2Service;
+        private readonly ICompetitionService<CompetitionService.BusinessLogic.Models.Entities.CompetitionDota2> _competitionDota2Service;
         private readonly ICoefficientService _coefficientService;
         private readonly ICompetitionBaseService _competitionBaseService;
         private readonly IMapper _mapper;
         private readonly GrpcClientFactory _grpcClientFactory;
 
         public CompetitionService(
-            ICompetitionService<CompetitionBusinessEntities.CompetitionDota2> competitionDota2Service,
+            ICompetitionService<CompetitionService.BusinessLogic.Models.Entities.CompetitionDota2> competitionDota2Service,
             ICoefficientService coefficientService,
             ICompetitionBaseService competitionBaseService,
             IMapper mapper,
@@ -36,7 +36,7 @@ namespace CompetitionService.Grpc.Services
         public override async Task<CreateCompetitionDota2Response> CreateCompetitionDota2(CreateCompetitionDota2Request request, ServerCallContext context)
         {
             var token = context.CancellationToken;
-            var competitionDota2 = _mapper.Map<CompetitionBusinessEntities.CompetitionDota2>(request.CompetitionDota2);
+            var competitionDota2 = _mapper.Map<CompetitionService.BusinessLogic.Models.Entities.CompetitionDota2>(request.CompetitionDota2);
 
             await _competitionDota2Service.Create(competitionDota2, token);
 
@@ -67,7 +67,7 @@ namespace CompetitionService.Grpc.Services
         {
             var token = context.CancellationToken;
 
-            var updatedCompetition = _mapper.Map<CompetitionBusinessEntities.CompetitionDota2>(request.CompetitionDota2);
+            var updatedCompetition = _mapper.Map<CompetitionService.BusinessLogic.Models.Entities.CompetitionDota2>(request.CompetitionDota2);
 
             await _competitionDota2Service.Update(updatedCompetition, token);
 
@@ -93,7 +93,7 @@ namespace CompetitionService.Grpc.Services
         {
             var token = context.CancellationToken;
 
-            var completedCompetitionBase = _mapper.Map<CompetitionBusinessEntities.CompetitionBase>(request.CompetitionBase);
+            var completedCompetitionBase = _mapper.Map<CompetitionService.BusinessLogic.Models.Entities.CompetitionBase>(request.CompetitionBase);
 
             await _competitionBaseService.CompleteCompetitionBaseOutcomes(completedCompetitionBase, token);
 

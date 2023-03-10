@@ -1,4 +1,4 @@
-﻿namespace CompetitionService.BusinessLogic.Entities
+﻿namespace CompetitionService.BusinessLogic.Models.Entities
 {
     public class CompetitionDota2
     {

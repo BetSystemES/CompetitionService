@@ -1,5 +1,5 @@
-﻿using CompetitionService.BusinessLogic.Entities;
-using CompetitionService.BusinessLogic.Enums;
+﻿using CompetitionService.BusinessLogic.Enums;
+using CompetitionService.BusinessLogic.Models.Entities;
 
 namespace CompetitionService.FunctionalTests.TestData
 {

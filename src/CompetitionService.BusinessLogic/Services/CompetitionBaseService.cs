@@ -2,9 +2,9 @@
 using CompetitionService.BusinessLogic.Contracts.DataAccess.Providers;
 using CompetitionService.BusinessLogic.Contracts.DataAccess.Repositories;
 using CompetitionService.BusinessLogic.Contracts.Services;
-using CompetitionService.BusinessLogic.Entities;
 using CompetitionService.BusinessLogic.Enums;
 using CompetitionService.BusinessLogic.Extensions;
+using CompetitionService.BusinessLogic.Models.Entities;
 
 namespace CompetitionService.BusinessLogic.Services
 {
