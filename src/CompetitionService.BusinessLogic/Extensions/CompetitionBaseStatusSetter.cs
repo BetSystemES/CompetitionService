@@ -1,4 +1,8 @@
-﻿using CompetitionService.BusinessLogic.Models.Entities;
+﻿<<<<<<< HEAD:src/CompetitionService.BusinessLogic/Extensions/CompetitionBaseStatusSetter.cs
+using CompetitionService.BusinessLogic.Entities;
+=======
+﻿using CompetitionService.BusinessLogic.Entities;
+>>>>>>> features/coefficient-outcome-type-support:src/CompetitionService.BusinessLogic/Extensions/CompetitionBaseBlocker.cs
 using CompetitionService.BusinessLogic.Models.Enums;
 
 namespace CompetitionService.BusinessLogic.Extensions

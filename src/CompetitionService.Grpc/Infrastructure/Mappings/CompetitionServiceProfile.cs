@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using CompetitionService.BusinessLogic.Models.Enums;
 using Google.Protobuf.WellKnownTypes;
 
 using BusinessEntities = CompetitionService.BusinessLogic.Entities;
