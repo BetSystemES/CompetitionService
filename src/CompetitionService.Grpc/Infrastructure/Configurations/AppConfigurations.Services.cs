@@ -16,7 +16,7 @@ namespace CompetitionService.Grpc.Infrastructure.Configurations
         {
             services.AddAutoMapper(typeof(CompetitionServiceProfile).Assembly);
 
-            services.AddScoped<ICompetitionService<CompetitionService.BusinessLogic.Models.Entities.CompetitionDota2>, CompetitionDota2Service>();
+            services.AddScoped<ICompetitionService<BusinessEntities.CompetitionDota2>, CompetitionDota2Service>();
             services.AddScoped<ICompetitionBaseService, CompetitionBaseService>();
             services.AddScoped<ICoefficientService, CoefficientService>();
 

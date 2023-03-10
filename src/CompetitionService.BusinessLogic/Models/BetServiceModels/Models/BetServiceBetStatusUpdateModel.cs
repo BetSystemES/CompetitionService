@@ -1,4 +1,4 @@
-﻿using CompetitionService.BusinessLogic.Enums;
+﻿using CompetitionService.BusinessLogic.Models.Enums;
 using CompetitionService.BusinessLogic.Models.BetServiceModels.Enums;
 
 namespace CompetitionService.BusinessLogic.Models.BetServiceModels.Models

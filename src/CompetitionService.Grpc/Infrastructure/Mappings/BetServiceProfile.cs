@@ -1,10 +1,9 @@
 ﻿using AutoMapper;
 using Google.Protobuf.WellKnownTypes;
-using BusinessModels = CompetitionService.BusinessLogic.Models.BetServiceModels.Models;
-using BusinessEnums = CompetitionService.BusinessLogic.Models.BetServiceModels.Enums;
 using BetService.Grpc;
 using CompetitionService.BusinessLogic.Models.BetServiceModels.Models;
 using CompetitionService.BusinessLogic.Models;
+using CompetitionService.BusinessLogic.Models.BetServiceModels.Enums;
 
 namespace CompetitionService.Grpc.Infrastructure.Mappings
 {
@@ -21,14 +20,14 @@ namespace CompetitionService.Grpc.Infrastructure.Mappings
                 .ConvertUsing(x => Timestamp.FromDateTime(x));
             CreateMap<Timestamp, DateTime>()
                 .ConvertUsing(x => x.ToDateTime());
-            CreateMap<BusinessModels.BetServiceBet, Bet>()
+            CreateMap<BetServiceBet, Bet>()
                 .ReverseMap();
-            CreateMap<BusinessModels.BetServiceBetStatusUpdateModel, BetStatusUpdateModel>()
+            CreateMap<BetServiceBetStatusUpdateModel, BetStatusUpdateModel>()
                 .ReverseMap();
-            CreateMap<BetCreateModel, BusinessModels.BetServiceBet>();
-            CreateMap<BusinessEnums.BetServiceBetPayoutStatus, BetPayoutStatus>()
+            CreateMap<BetCreateModel, BetServiceBet>();
+            CreateMap<BetServiceBetPayoutStatus, BetPayoutStatus>()
                 .ReverseMap();
-            CreateMap<BusinessEnums.BetServiceBetStatusType, BetStatusType>()
+            CreateMap<BetServiceBetStatusType, BetStatusType>()
                 .ReverseMap();
             CreateMap<BetServiceBetStatusUpdateModel, CoefficientStatus>()
                 .ForMember(dest => dest.OutcomeType,
