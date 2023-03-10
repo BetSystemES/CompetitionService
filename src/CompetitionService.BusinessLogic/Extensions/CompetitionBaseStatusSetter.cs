@@ -6,7 +6,7 @@ namespace CompetitionService.BusinessLogic.Extensions
     /// <summary>
     /// Provides functionality for setting coefficients status.
     /// </summary>
-    public static class CompetitionBaseBlocker
+    public static class CompetitionBaseStatusSetter
     {
         /// <summary>
         /// Sets the coefficients status.

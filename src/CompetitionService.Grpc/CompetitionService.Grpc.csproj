@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Protos\bet_service.proto" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="FluentValidation" Version="11.5.1" />
     <PackageReference Include="FluentValidation.AspNetCore" Version="11.2.2" />
     <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.5.1" />
@@ -21,6 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Protobuf Include="Protos\bet_service.proto" GrpcServices="Client" />
     <Protobuf Include="Protos\competition_service.proto" GrpcServices="Both" />
   </ItemGroup>
 

@@ -1,0 +1,97 @@
+syntax = "proto3";
+
+package betservice;
+
+import "google/protobuf/timestamp.proto";
+
+option csharp_namespace = "BetService.Grpc";
+
+service BetService {
+  rpc CreateBet (CreateBetRequset)
+    returns (CreateBetResponse);
+  rpc CreateBetRange (CreateBetRangeRequest)
+    returns (CreateBetRangeResponse);
+  rpc UpdateBetStatuses (UpdateBetStatusesRequest)
+    returns (UpdateBetStatusesResponse);
+  rpc GetUsersBets (GetUsersBetsRequset)
+    returns (GetUsersBetsResponse);
+  rpc GetUserBetById (GetUserBetByIdRequset)
+    returns (GetUserBetByIdResponse);
+}
+
+message CreateBetRequset {
+  BetCreateModel bet_create_model = 1;
+}
+
+message CreateBetResponse {
+}
+
+message CreateBetRangeRequest {
+  repeated BetCreateModel bet_create_models = 1;
+}
+
+message CreateBetRangeResponse {
+}
+
+message UpdateBetStatusesRequest {
+  repeated BetStatusUpdateModel bet_status_update_models = 1;
+}
+
+message UpdateBetStatusesResponse {
+}
+
+message GetUsersBetsRequset {
+  string user_id = 1;
+  int32 page = 2;
+  int32 page_size = 3;
+}
+
+message GetUsersBetsResponse {
+  repeated Bet bets = 1;
+}
+
+message GetUserBetByIdRequset {
+  string id = 1;
+}
+
+message GetUserBetByIdResponse {
+  Bet bet = 1;
+}
+
+enum BetPayoutStatus {
+  BET_PAYOUT_STATUS_UNSPECIFIED = 0;
+  BET_PAYOUT_STATUS_PROCESSING = 1;
+  BET_PAYOUT_STATUS_PAID = 2;
+  BET_PAYOUT_STATUS_BLOCKED = 3;
+}
+
+enum BetStatusType {
+  BET_STATUS_TYPE_UNSPECIFIED = 0;
+  BET_STATUS_TYPE_WIN = 1;
+  BET_STATUS_TYPE_LOSE = 2;
+  BET_STATUS_TYPE_CANCELED = 3;
+  BET_STATUS_TYPE_BLOCKED = 4;
+}
+
+message Bet {
+  string id = 1;
+  string user_id = 2;
+  string coefficient_id = 3;
+  double amount = 4;
+  double rate = 5;
+  BetStatusType status_type = 6;
+  BetPayoutStatus payout_type = 7;
+  .google.protobuf.Timestamp create_at_utc = 8; 
+}
+
+message BetCreateModel {
+  string user_id = 1;
+  string coefficient_id = 2;
+  double amount = 3;
+  double rate = 4;
+}
+
+message BetStatusUpdateModel {
+  string coefficient_id = 1;
+  BetStatusType status_type = 2;
+}
