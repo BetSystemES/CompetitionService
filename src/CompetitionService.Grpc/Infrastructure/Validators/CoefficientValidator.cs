@@ -27,6 +27,10 @@ namespace CompetitionService.Grpc.Infrastructure.Validators
                 .Must(e => e != CoefficientStatusType.Unspecified)
                 .WithMessage($"Received {nameof(Coefficient.StatusType)} type is unsupported");
 
+            RuleFor(x => x.OutcomeType)
+                .Must(e => e != CoefficientOutcomeType.Unspecified)
+                .WithMessage($"Received {nameof(Coefficient.OutcomeType)} type is unsupported");
+
             RuleFor(x => x.Description)
                 .Must(e => !string.IsNullOrEmpty(e))
                 .WithMessage($"{_typeName}.${nameof(Coefficient.Description)} is invalid");

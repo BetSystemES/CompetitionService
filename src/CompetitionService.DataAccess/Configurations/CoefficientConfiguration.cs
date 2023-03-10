@@ -17,6 +17,7 @@ namespace CompetitionService.DataAccess.Configurations
             builder.Property(x => x.StatusType).IsRequired();
             builder.Property(x => x.Amount).IsRequired();
             builder.Property(x => x.Probability).IsRequired();
+            builder.Property(x => x.OutcomeType).IsRequired();
 
             builder.HasOne(x => x.CoefficientGroup).WithMany(x => x.Coefficients).HasForeignKey(x => x.CoefficientGroupId);
 

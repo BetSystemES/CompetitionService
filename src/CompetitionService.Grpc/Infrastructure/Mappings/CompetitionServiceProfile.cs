@@ -28,6 +28,8 @@ namespace CompetitionService.Grpc.Infrastructure.Mappings
                 .ReverseMap();
             CreateMap<BusnessEnums.CoefficientStatusType, CoefficientStatusType>()
                 .ReverseMap();
+            CreateMap<BusnessEnums.CoefficientOutcomeType, CoefficientOutcomeType>()
+                .ReverseMap();
             CreateMap<BusnessEnums.CompetitionStatusType, CompetitionStatusType>()
                 .ReverseMap();
             CreateMap<BusnessEnums.CompetitionType, CompetitionType>()
