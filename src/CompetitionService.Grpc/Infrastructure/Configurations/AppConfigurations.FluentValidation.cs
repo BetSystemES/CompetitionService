@@ -8,7 +8,7 @@ namespace CompetitionService.Grpc.Infrastructure.Configurations
         /// Add validators.
         /// </summary>
         /// <param name="services"></param>
-        /// <returns></returns>
+        /// <returns>IServiceCollection</returns>
         public static IServiceCollection AddValidators(this IServiceCollection services)
         {
             services.AddValidatorsFromAssembly(typeof(Program).Assembly);
