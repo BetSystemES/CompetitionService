@@ -17,7 +17,7 @@ builder.Services
     .AddInfrastructureServices()
     .AddProviders()
     .AddRepositories()
-    .AddValidators()
+    .AddFluentValidation ()
     .AddPostgreSqlContext(options =>
     {
         options.UseNpgsql(configuration.GetConnectionString("CompetitionDb"));

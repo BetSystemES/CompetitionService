@@ -9,7 +9,7 @@ namespace CompetitionService.Grpc.Infrastructure.Configurations
         /// </summary>
         /// <param name="services"></param>
         /// <returns></returns>
-        public static IServiceCollection AddValidators(this IServiceCollection services)
+        public static IServiceCollection AddFluentValidation (this IServiceCollection services)
         {
             services.AddValidatorsFromAssembly(typeof(Program).Assembly);
 
