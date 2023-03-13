@@ -1,5 +1,6 @@
 ﻿using CompetitionService.DataAccess.Extensions;
 using CompetitionService.Grpc.Infrastructure.Configurations;
+using CompetitionService.Grpc.Interceptors;
 using CompetitionService.Grpc.Settings;
 using Microsoft.EntityFrameworkCore;
 
@@ -12,12 +13,16 @@ builder.Services.Configure<ServiceEndpointsSettings>(
     builder.Configuration.GetSection("ServiceEndpointsSettings"));
 
 builder.Services
-    .AddGrpc()
+    .AddGrpc(options =>
+    {
+        options.Interceptors.Add<ErrorHandlingInterceptor>();
+        options.Interceptors.Add<ValidationInterceptor>();
+    })
     .Services
     .AddInfrastructureServices()
     .AddProviders()
     .AddRepositories()
-    .AddFluentValidation ()
+    .AddFluentValidation()
     .AddPostgreSqlContext(options =>
     {
         options.UseNpgsql(configuration.GetConnectionString("CompetitionDb"));

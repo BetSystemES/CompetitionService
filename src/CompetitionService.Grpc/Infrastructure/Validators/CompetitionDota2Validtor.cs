@@ -34,11 +34,11 @@ namespace CompetitionService.Grpc.Infrastructure.Validators
                 .WithMessage($"{_typeName}.${nameof(CompetitionDota2.Team2Id)} is invalid");
 
             RuleFor(x => x.Team1KillAmount)
-                .GreaterThan(_minTeamKillAmount)
+                .GreaterThanOrEqualTo(_minTeamKillAmount)
                 .WithMessage($"{_typeName}.${nameof(CompetitionDota2.Team1KillAmount)} is invalid");
 
             RuleFor(x => x.Team2KillAmount)
-                .GreaterThan(_minTeamKillAmount)
+                .GreaterThanOrEqualTo(_minTeamKillAmount)
                 .WithMessage($"{_typeName}.${nameof(CompetitionDota2.Team2KillAmount)} is invalid");
 
             RuleFor(x => x.TotalTime)
