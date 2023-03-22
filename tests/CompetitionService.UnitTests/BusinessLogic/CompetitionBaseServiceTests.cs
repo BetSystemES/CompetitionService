@@ -1,6 +1,5 @@
 ﻿using FizzWare.NBuilder;
 using Moq;
-
 using CompetitionService.BusinessLogic.Contracts.DataAccess;
 using CompetitionService.BusinessLogic.Contracts.DataAccess.Providers;
 using CompetitionService.BusinessLogic.Contracts.DataAccess.Repositories;

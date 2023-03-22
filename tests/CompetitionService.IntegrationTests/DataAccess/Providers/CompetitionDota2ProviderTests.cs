@@ -1,8 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-
 using FizzWare.NBuilder;
 using FluentAssertions;
-
 using CompetitionService.BusinessLogic.Contracts.DataAccess;
 using CompetitionService.BusinessLogic.Contracts.DataAccess.Providers;
 using CompetitionService.BusinessLogic.Contracts.DataAccess.Repositories;
