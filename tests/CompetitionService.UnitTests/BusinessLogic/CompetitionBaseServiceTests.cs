@@ -1,11 +1,11 @@
-﻿using CompetitionService.BusinessLogic.Contracts.DataAccess;
+﻿using FizzWare.NBuilder;
+using Moq;
+using CompetitionService.BusinessLogic.Contracts.DataAccess;
 using CompetitionService.BusinessLogic.Contracts.DataAccess.Providers;
 using CompetitionService.BusinessLogic.Contracts.DataAccess.Repositories;
 using CompetitionService.BusinessLogic.Contracts.Services;
 using CompetitionService.BusinessLogic.Entities;
-using CompetitionService.BusinessLogic.Models.Enums;
 using CompetitionService.BusinessLogic.Services;
-using Moq;
 
 namespace CompetitionService.UnitTests.BusinessLogic
 {
@@ -35,80 +35,27 @@ namespace CompetitionService.UnitTests.BusinessLogic
         public async Task BlockCompetitionBaseById_Should_UpdateAndSaveChanges()
         {
             // Arrange
-            var id = Guid.Parse("f3793808-0fc6-4e57-a9ec-20ff7c85ddfc");
+            var id = Guid.NewGuid();
 
-            // TODO: use NBuilder library for data preparation
-            var competitionBaseToComplete = new CompetitionBase()
-            {
-                Id = Guid.Parse("b6f43b5a-c037-404e-8cfd-8d39b54d5e77"),
-                StartTime = DateTime.MinValue,
-                StatusType = CompetitionStatusType.Live,
-                Type = CompetitionType.EsportDota2,
-                CoefficientGroups = new List<CoefficientGroup>()
-                    {
-                        new CoefficientGroup()
-                        {
-                            Id = Guid.Parse("dcd66d95-2c8b-4480-9844-4a9e5f0531c8"),
-                            CompetitionBaseId = Guid.Parse("3d32fbb9-0034-4d75-b1d5-5c0a8398c885"),
-                            Name = "winner",
-                            Type = CoefficientGroupType.OneWinner,
-                            Coefficients= new List<Coefficient>()
-                            {
-                                new Coefficient()
-                                {
-                                    Id = Guid.Parse("f582c094-3b31-46ce-bc8a-a6650cb27c58"),
-                                    Description = "desc",
-                                    Amount= 0,
-                                    Rate = 1,
-                                    StatusType = CoefficientStatusType.Active,
-                                    Probability = 50,
-                                },
-                                new Coefficient()
-                                {
-                                    CoefficientGroupId = Guid.Parse("e27543d8-f40b-4e8e-b04b-aaee17679ff7"),
-                                    Id = Guid.Parse("94e75b14-64f0-4ebc-8032-2a71c838e5c1"),
-                                    Description = "desc",
-                                    Amount= 0,
-                                    Rate = 1,
-                                    StatusType = CoefficientStatusType.Active,
-                                    Probability = 50,
-                                },
-                            }
-                        },
-                        new CoefficientGroup()
-                        {
-                            Id = Guid.Parse("d641a457-5e36-40a2-8ead-41d14090c4c3"),
-                            Name = "most kills",
-                            Type = CoefficientGroupType.TwoWinners,
-                            Coefficients= new List<Coefficient>()
-                            {
-                                new Coefficient()
-                                {
-                                    Id = Guid.Parse("3b5e6bd4-00bf-4283-9a0e-f09c419957c4"),
-                                    Description = "desc",
-                                    Amount= 0,
-                                    Rate = 1,
-                                    StatusType = CoefficientStatusType.Active,
-                                    Probability = 50,
-                                },
-                                new Coefficient()
-                                {
-                                    Id = Guid.Parse("1b0fabcc-0b77-4e85-8840-00185e8276df"),
-                                    Description = "desc",
-                                    Amount= 0,
-                                    Rate = 1,
-                                    StatusType = CoefficientStatusType.Active,
-                                    Probability = 50,
-                                },
-                            }
-                        }
-                    }
-            };
+            var coefficients = Builder<Coefficient>
+                .CreateListOfSize(2)
+                .Build();
+
+            var coefficientGroups = Builder<CoefficientGroup>
+                .CreateListOfSize(2)
+                .All()
+                .With(x => x.Coefficients = coefficients.ToList())
+                .Build();
+            
+            var competitionBaseToComplete = Builder<CompetitionBase>
+                .CreateNew()
+                .With(x => x.CoefficientGroups = coefficientGroups.ToList())
+                .Build();
 
             _mockCompetitionBaseProvider.Setup(_ => _.GetById(
                 It.IsAny<Guid>(),
                 It.IsAny<CancellationToken>()))
-                .Returns(Task.FromResult(competitionBaseToComplete));
+                .ReturnsAsync(competitionBaseToComplete);
 
             // Act
             await _competitionBaseService.BlockCompetitionBaseById(id, _ct);
@@ -126,74 +73,10 @@ namespace CompetitionService.UnitTests.BusinessLogic
         [Fact]
         public async Task CompleteCompetitionBaseOutcomes_Should_CompleteCompetitionStatuses()
         {
-            // TODO: use NBuilder library for data preparation
             // Arrange
-            var competitionBaseToComplete = new CompetitionBase()
-            {
-                Id = Guid.Parse("b6f43b5a-c037-404e-8cfd-8d39b54d5e77"),
-                StartTime = DateTime.MinValue,
-                StatusType = CompetitionStatusType.Live,
-                Type = CompetitionType.EsportDota2,
-                CoefficientGroups = new List<CoefficientGroup>()
-                    {
-                        new CoefficientGroup()
-                        {
-                            Id = Guid.Parse("dcd66d95-2c8b-4480-9844-4a9e5f0531c8"),
-                            CompetitionBaseId = Guid.Parse("3d32fbb9-0034-4d75-b1d5-5c0a8398c885"),
-                            Name = "winner",
-                            Type = CoefficientGroupType.OneWinner,
-                            Coefficients= new List<Coefficient>()
-                            {
-                                new Coefficient()
-                                {
-                                    Id = Guid.Parse("f582c094-3b31-46ce-bc8a-a6650cb27c58"),
-                                    Description = "desc",
-                                    Amount= 0,
-                                    Rate = 1,
-                                    StatusType = CoefficientStatusType.Active,
-                                    Probability = 50,
-                                },
-                                new Coefficient()
-                                {
-                                    CoefficientGroupId = Guid.Parse("e27543d8-f40b-4e8e-b04b-aaee17679ff7"),
-                                    Id = Guid.Parse("94e75b14-64f0-4ebc-8032-2a71c838e5c1"),
-                                    Description = "desc",
-                                    Amount= 0,
-                                    Rate = 1,
-                                    StatusType = CoefficientStatusType.Active,
-                                    Probability = 50,
-                                },
-                            }
-                        },
-                        new CoefficientGroup()
-                        {
-                            Id = Guid.Parse("d641a457-5e36-40a2-8ead-41d14090c4c3"),
-                            Name = "most kills",
-                            Type = CoefficientGroupType.TwoWinners,
-                            Coefficients= new List<Coefficient>()
-                            {
-                                new Coefficient()
-                                {
-                                    Id = Guid.Parse("3b5e6bd4-00bf-4283-9a0e-f09c419957c4"),
-                                    Description = "desc",
-                                    Amount= 0,
-                                    Rate = 1,
-                                    StatusType = CoefficientStatusType.Active,
-                                    Probability = 50,
-                                },
-                                new Coefficient()
-                                {
-                                    Id = Guid.Parse("1b0fabcc-0b77-4e85-8840-00185e8276df"),
-                                    Description = "desc",
-                                    Amount= 0,
-                                    Rate = 1,
-                                    StatusType = CoefficientStatusType.Active,
-                                    Probability = 50,
-                                },
-                            }
-                        }
-                    }
-            };
+            var competitionBaseToComplete = Builder<CompetitionBase>
+                .CreateNew()
+                .Build();
 
             // Act
             await _competitionBaseService.CompleteCompetitionBaseOutcomes(competitionBaseToComplete, _ct);

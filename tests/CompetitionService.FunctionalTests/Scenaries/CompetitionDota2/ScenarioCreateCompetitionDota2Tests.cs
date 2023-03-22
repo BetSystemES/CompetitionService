@@ -1,11 +1,13 @@
 ﻿using AutoMapper;
-using CompetitionService.FunctionalTests.Adapters;
-using CompetitionService.FunctionalTests.TestData;
-using CompetitionService.Grpc;
+using FizzWare.NBuilder;
 using NScenario;
 using Xunit.Abstractions;
+using CompetitionService.FunctionalTests.Adapters;
+using CompetitionService.Grpc;
 using static CompetitionService.Grpc.CompetitionService;
-
+using Coefficient = CompetitionService.BusinessLogic.Entities.Coefficient;
+using CoefficientGroup = CompetitionService.BusinessLogic.Entities.CoefficientGroup;
+using CompetitionBase = CompetitionService.BusinessLogic.Entities.CompetitionBase;
 using GrpcModels = CompetitionService.Grpc;
 
 namespace CompetitionService.FunctionalTests.Scenaries.CompetitionDota2
@@ -29,13 +31,38 @@ namespace CompetitionService.FunctionalTests.Scenaries.CompetitionDota2
                 new XUnitOutputAdapter(_outputHelper),
                 testMethodName: $"Create competition.");
 
+            var coefficients = Builder<Coefficient>
+                .CreateListOfSize(2)
+                .All()
+                .With(x => x.Id = Guid.NewGuid())
+                .Build();
+
+            var coefficientGroups = Builder<CoefficientGroup>
+                .CreateListOfSize(2)
+                .All()
+                .With(x => x.Id = Guid.NewGuid())
+                .With(x => x.Coefficients = coefficients.ToList())
+                .Build();
+
+            var competitionDota2 = Builder<BusinessLogic.Entities.CompetitionDota2>
+                .CreateNew()
+                .With(x => x.Id = Guid.NewGuid())
+                .With(x => x.Team1Id = Guid.NewGuid())
+                .With(x => x.Team2Id = Guid.NewGuid())
+                .With(x => x.CompetitionBase = Builder<CompetitionBase>
+                    .CreateNew()
+                    .With(x => x.Id = Guid.NewGuid())
+                    .With(x => x.CoefficientGroups = coefficientGroups.ToList())
+                    .Build())
+                .Build();
+
             var createCompetitionDota2Response = await scenario
                 .Step($"Create competition dota2",
                 async () =>
                 {
                     var request = new CreateCompetitionDota2Request();
 
-                    var competitionDota2Grpc = _mapper.Map<GrpcModels.CompetitionDota2>(CompetitionDota2Samples.CompetitionDota2ValidModel);
+                    var competitionDota2Grpc = _mapper.Map<GrpcModels.CompetitionDota2>(competitionDota2);
                     request.CompetitionDota2 = competitionDota2Grpc;
 
                     return await _client.CreateCompetitionDota2Async(request);
