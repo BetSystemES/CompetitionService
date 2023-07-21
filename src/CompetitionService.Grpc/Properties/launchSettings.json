@@ -1,13 +1,18 @@
-﻿{
-   "profiles": {
-      "CompetitionService.Grpc": {
-         "commandName": "Project",
-         "dotnetRunMessages": true,
-         "launchBrowser": false,
-         "applicationUrl": "http://localhost:5263;https://localhost:7171",
-         "environmentVariables": {
-            "ASPNETCORE_ENVIRONMENT": "Development"
-         }
-      }
-   }
+{
+  "profiles": {
+    "CompetitionService.Grpc": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "dotnetRunMessages": true,
+      "applicationUrl": "http://localhost:5263;https://localhost:7171"
+    },
+    "Docker": {
+      "commandName": "Docker",
+      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}",
+      "publishAllPorts": true,
+      "useSSL": true
+    }
+  }
 }

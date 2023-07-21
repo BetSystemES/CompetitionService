@@ -41,5 +41,19 @@ namespace CompetitionService.BusinessLogic.Services
             await _repository.Update(competitionBase, token);
             await _context.SaveChanges(token);
         }
+
+        public async Task<CompetitionBase> Create(CompetitionBase competitionBase, CancellationToken token)
+        {
+            var addedCompetitionBase = await _repository.Create(competitionBase, token);
+            await _context.SaveChanges(token);
+
+            return addedCompetitionBase;
+        }
+
+        public async Task Update(CompetitionBase competitionBase, CancellationToken token)
+        {
+            await _repository.Update(competitionBase, token);
+            await _context.SaveChanges(token);
+        }
     }
 }

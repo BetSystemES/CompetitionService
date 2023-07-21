@@ -13,11 +13,11 @@ namespace CompetitionService.DataAccess.Repositories
             _entities = entities;
         }
 
-        public Task Create(CompetitionBase item, CancellationToken token)
+        public async Task<CompetitionBase> Create(CompetitionBase item, CancellationToken token)
         {
             _entities.Add(item);
 
-            return Task.CompletedTask;
+            return item;
         }
 
         public Task Update(CompetitionBase item, CancellationToken token)

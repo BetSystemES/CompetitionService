@@ -2,6 +2,7 @@
 using CompetitionService.BusinessLogic.Contracts.DataAccess.Providers;
 using CompetitionService.BusinessLogic.Contracts.DataAccess.Repositories;
 using CompetitionService.BusinessLogic.Contracts.Services;
+using CompetitionService.BusinessLogic.Entities;
 
 namespace CompetitionService.BusinessLogic.Services
 {
@@ -21,6 +22,12 @@ namespace CompetitionService.BusinessLogic.Services
             _context = context;
         }
 
+        public async Task Create(Coefficient coefficient, CancellationToken token)
+        {
+            await _repository.Create(coefficient, token);
+            await _context.SaveChanges(token);
+        }
+
         public async Task<double> DepositToCoefficientById(Guid id, double amount, CancellationToken token)
         {
             var coefficient = await _provider.GetById(id, token);
@@ -32,6 +39,12 @@ namespace CompetitionService.BusinessLogic.Services
             await _context.SaveChanges(token);
 
             return rate;
+        }
+
+        public async Task Update(Coefficient coefficient, CancellationToken token)
+        {
+            await _repository.Update(coefficient, token);
+            await _context.SaveChanges(token);
         }
     }
 }

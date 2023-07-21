@@ -1,0 +1,141 @@
+syntax = "proto3";
+
+option csharp_namespace = "CashService.GRPC";
+
+import "google/protobuf/timestamp.proto";
+
+package cash;
+
+// The CashService definition.
+service CashService {
+  rpc CreateCashProfile (CreateCashProfileRequest) returns (CreateCashProfileResponse);
+  rpc GetTransactionsHistory (GetTransactionsHistoryRequest) returns (GetTransactionsHistoryResponse);
+  rpc GetPagedTransactionHistory (GetTransactionHistoryWithFilterRequest) returns (GetPagedTransactionsHistoryResponse);
+  rpc GetBalance (GetBalanceRequest) returns (GetBalanceResponse);
+  rpc CalcBalanceWithinCashtype (CalcBalanceWithinCashtypeRequest) returns (CalcBalanceWithinCashtypeResponse);
+  rpc Deposit (DepositRequest) returns (DepositResponse);
+  rpc Withdraw (WithdrawRequest) returns (WithdrawResponse);
+  rpc DepositRange (DepositRangeRequest) returns (DepositRangeResponse);
+  rpc WithdrawRange (WithdrawRangeRequest) returns (WithdrawRangeResponse);
+}
+
+message CreateCashProfileRequest {
+	string user_id = 1;
+}
+
+message CreateCashProfileResponse {
+}
+
+message GetTransactionsHistoryRequest {
+	string profile_id = 1;
+}
+message GetTransactionsHistoryResponse {
+	TransactionModel balance = 1;
+}
+
+message GetTransactionHistoryWithFilterRequest {
+	string profile_id = 1;
+	TransactionHistoryFilter transaction_history_filter = 2;
+}
+message GetPagedTransactionsHistoryResponse {
+	int32 total_count = 1;
+	repeated TransactionModel transactions = 2;
+}
+
+message GetBalanceRequest {
+	string profile_id = 1;
+}
+message GetBalanceResponse {
+	string profile_id = 1;
+	double balance = 2;
+}
+
+message CalcBalanceWithinCashtypeRequest {
+	string profile_id = 1;
+}
+
+message CalcBalanceWithinCashtypeResponse {
+	TransactionModel balance = 1;
+}
+
+message DepositRequest {
+	TransactionRequestModel deposit = 1;
+}
+message DepositResponse {
+	TransactionModel depositresponse = 1;
+}
+
+message WithdrawRequest {
+	TransactionRequestModel withdrawrequest = 1;
+}
+message WithdrawResponse {
+	TransactionModel withdrawresponse = 1;
+}
+
+message DepositRangeRequest {
+	repeated TransactionModel deposit_range_requests = 1;
+}
+message DepositRangeResponse {
+}
+
+message WithdrawRangeRequest {
+	repeated TransactionModel withdraw_range_requests = 1;
+}
+message WithdrawRangeResponse {
+	repeated TransactionModel withdraw_range_responses = 1;
+}
+
+
+message TransactionModel
+{
+	string profile_id = 1;
+	double amount = 2;
+	repeated Transaction transactions = 3;
+}
+
+message TransactionRequestModel
+{
+	string profile_id = 1;
+	repeated Transaction transactions = 2;
+}
+
+message TransactionResponseModel
+{
+	string profile_id = 1;
+	double cash_amount = 2;
+	repeated Transaction transactions = 3;
+}
+
+message Transaction
+{
+	string id = 1; 
+	CashType cash_type = 2;
+	double amount = 3;
+	google.protobuf.Timestamp date = 4;
+}
+
+enum CashType
+{
+	CASH_TYPE_UNSPECIFIED = 0;
+	CASH_TYPE_CASH=1;
+	CASH_TYPE_BONUS=2;
+}
+
+enum OrderDirection {
+	ORDER_DIRECTION_UNSPECIFIED = 0;
+	ORDER_DIRECTION_ASCENDING = 1;
+	ORDER_DIRECTION_DESCENDING = 2;
+}
+
+message TransactionHistoryFilter {
+	int32 page_number = 1;
+	int32 page_size = 2;
+	string column_name = 3;
+	OrderDirection order_direction = 4;
+	repeated string user_ids = 5;
+	CashType cash_type = 6;
+	double startAmount = 7;
+	double endAmount = 8;
+	google.protobuf.Timestamp start_date = 9;
+	google.protobuf.Timestamp end_date = 10;
+}

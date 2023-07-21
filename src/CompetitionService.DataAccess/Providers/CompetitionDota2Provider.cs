@@ -30,6 +30,7 @@ namespace CompetitionService.DataAccess.Providers
                 .Include(x => x.CompetitionBase)
                 .ThenInclude(x => x.CoefficientGroups)
                 .ThenInclude(x => x.Coefficients)
+                .OrderByDescending(x => x.CompetitionBase.StartTime)
                 .ToListAsync(token);
 
             return result;

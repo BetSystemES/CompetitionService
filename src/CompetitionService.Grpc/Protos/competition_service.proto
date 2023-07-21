@@ -9,8 +9,16 @@ option csharp_namespace = "CompetitionService.Grpc";
 service CompetitionService {
   rpc CreateCompetitionDota2 (CreateCompetitionDota2Request)
     returns (CreateCompetitionDota2Response);
+  rpc CreateCompetitionBase (CreateCompetitionBaseRequest)
+    returns (CreateCompetitionBaseResponse);
+  rpc CreateCoefficient (CreateCoefficientRequest)
+    returns (CreateCoefficientResponse);
+  rpc CreateOutcome (CreateOutcomeRequest)
+    returns (CreateOutcomeResponse);
   rpc GetCompetitionsDota2 (GetCompetitionsDota2Request)
     returns (GetCompetitionsDota2Response);
+  rpc GetCompetitionDota2 (GetCompetitionDota2Request)
+    returns (GetCompetitionDota2Response);
   rpc UpdateCompetitionDota2 (UpdateCompetitionDota2Request)
     returns (UpdateCompetitionDota2Response);
   rpc BlockCompetitionBaseById (BlockCompetitionBaseByIdRequest)
@@ -19,14 +27,65 @@ service CompetitionService {
     returns (CompleteCompetitionBaseOutcomesResponse);
   rpc DepositToCoefficientById (DepositToCoefficientByIdRequest)
     returns (DepositToCoefficientByIdResponse);
+  rpc UpdateCoefficient(UpdateCoefficientRequest)
+    returns (UpdateCoefficientResponse);
+  rpc UpdateCompetitionBase(UpdateCompetitionBaseRequest)
+    returns (UpdateCompetitionBaseResponse);
+  rpc UpdateOutcome(UpdateOutcomeRequest)
+    returns (UpdateOutcomeResponse);
+}
+
+message UpdateCoefficientRequest {
+  CoefficientUpdateModel coefficient_update_model = 1;
+}
+
+message UpdateCoefficientResponse {
+}
+
+message UpdateCompetitionBaseRequest {
+  CompetitionBaseUpdateModel competition_base_update_model = 1;
+}
+
+message UpdateCompetitionBaseResponse {
+}
+
+message UpdateOutcomeRequest {
+  CoefficientGroupUpdateModel outcome_update_model = 1;
+}
+
+message UpdateOutcomeResponse {
+
 }
 
 message CreateCompetitionDota2Request {
-  CompetitionDota2 competition_dota2 = 1;
+  CompetitionDota2CreateModel competition_dota2_create_model = 1;
 }
 
 message CreateCompetitionDota2Response {
 }
+
+message CreateCompetitionBaseRequest {
+  CompetitionBaseCreateModel competition_base_create_model = 1;
+}
+
+message CreateCompetitionBaseResponse {
+  CompetitionBase competition_base = 1;
+}
+
+message CreateCoefficientRequest {
+  CoefficientCreateModel coefficient_create_model = 1;
+}
+
+message CreateCoefficientResponse {
+}
+
+message CreateOutcomeRequest {
+  CoefficientGroupCreateModel coefficient_group_create_model = 1;
+}
+
+message CreateOutcomeResponse {
+}
+
 
 message GetCompetitionsDota2Request {
   int32 page = 1;
@@ -37,8 +96,16 @@ message GetCompetitionsDota2Response {
   repeated CompetitionDota2 competitions_dota2 = 1;
 }
 
-message UpdateCompetitionDota2Request {
+message GetCompetitionDota2Request {
+  string id = 1;
+}
+
+message GetCompetitionDota2Response {
   CompetitionDota2 competition_dota2 = 1;
+}
+
+message UpdateCompetitionDota2Request {
+  CompetitionDota2UpdateModel competition_dota2_update_model = 1;
 }
 
 message UpdateCompetitionDota2Response {
@@ -59,8 +126,9 @@ message CompleteCompetitionBaseOutcomesResponse {
 }
 
 message DepositToCoefficientByIdRequest {
-  string coefficient_id = 1;
-  double amount = 2;
+  string user_id = 1;
+  string coefficient_id = 2;
+  double amount = 3;
 }
 
 message DepositToCoefficientByIdResponse {
@@ -102,14 +170,90 @@ enum CoefficientOutcomeType {
   COEFFICIENT_OUTCOME_TYPE_BLOCKED = 4;
 }
 
+message CompetitionDota2UpdateModel {
+  string id = 1;
+  string competition_base_id = 2;
+  string team1_name = 3;
+  string team2_name = 4;
+  string team1_id = 5;
+  string team2_id = 6;
+  int32 team1_kill_amount = 7;
+  int32 team2_kill_amount = 8;
+  .google.protobuf.Timestamp total_time = 9;
+}
+
+message CompetitionBaseUpdateModel {
+  string id = 1;
+  CompetitionType type = 2;
+  CompetitionStatusType status_type = 3;
+  .google.protobuf.Timestamp start_time = 4;
+}
+
+message CoefficientGroupUpdateModel {
+  string id = 1;
+  string competition_base_id = 2;
+  string name = 3;
+  CoefficientGroupType type = 4;
+}
+
+message CoefficientUpdateModel {
+  string id = 1;
+  string coefficient_group_id = 2;
+  string description = 3;
+  double rate = 4;
+  CoefficientStatusType status_type = 5;
+  double amount = 6;
+  double probability = 7;
+  CoefficientOutcomeType outcome_type = 8;
+}
+
+message CompetitionDota2CreateModel {
+  string competition_base_id = 1;
+  string team1_name = 2;
+  string team2_name = 3;
+  string team1_id = 4;
+  string team2_id = 5;
+  int32 team1_kill_amount = 6;
+  int32 team2_kill_amount = 7;
+  .google.protobuf.Timestamp total_time = 8;
+  CompetitionBase competition_base = 9;
+}
+
+message CompetitionBaseCreateModel {
+  CompetitionType type = 1;
+  CompetitionStatusType status_type = 2;
+  .google.protobuf.Timestamp start_time = 3;
+  repeated CoefficientGroup coefficient_groups = 4;
+}
+
+message CoefficientGroupCreateModel {
+  string competition_base_id = 1;
+  string name = 2;
+  CoefficientGroupType type = 3;
+  repeated Coefficient coefficients = 4;
+}
+
+message CoefficientCreateModel {
+  string coefficient_group_id = 1;
+  string description = 2;
+  double rate = 3;
+  CoefficientStatusType status_type = 4;
+  double amount = 5;
+  double probability = 6;
+  CoefficientOutcomeType outcome_type = 7;
+}
+
 message CompetitionDota2 {
   string id = 1;
-  string team1_id = 2;
-  string team2_id = 3;
-  int32 team1_kill_amount = 4;
-  int32 team2_kill_amount = 5;
-  .google.protobuf.Timestamp total_time = 6;
-  CompetitionBase competition_base = 7;
+  string competition_base_id = 2;
+  string team1_name = 3;
+  string team2_name = 4;
+  string team1_id = 5;
+  string team2_id = 6;
+  int32 team1_kill_amount = 7;
+  int32 team2_kill_amount = 8;
+  .google.protobuf.Timestamp total_time = 9;
+  CompetitionBase competition_base = 10;
 }
 
 message CompetitionBase {
@@ -122,17 +266,19 @@ message CompetitionBase {
 
 message CoefficientGroup {
   string id = 1;
-  string name = 2;
-  CoefficientGroupType type = 3;
-  repeated Coefficient coefficients = 4;
+  string competition_base_id = 2;
+  string name = 3;
+  CoefficientGroupType type = 4;
+  repeated Coefficient coefficients = 5;
 }
 
 message Coefficient {
   string id = 1;
-  string description = 2;
-  double rate = 3;
-  CoefficientStatusType status_type = 4;
-  double amount = 5;
-  double probability = 6;
-  CoefficientOutcomeType outcome_type = 7;
+  string coefficient_group_id = 2;
+  string description = 3;
+  double rate = 4;
+  CoefficientStatusType status_type = 5;
+  double amount = 6;
+  double probability = 7;
+  CoefficientOutcomeType outcome_type = 8;
 }

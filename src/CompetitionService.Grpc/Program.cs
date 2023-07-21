@@ -4,8 +4,9 @@ using CompetitionService.Grpc.Interceptors;
 using CompetitionService.Grpc.Settings;
 using Microsoft.EntityFrameworkCore;
 
-var builder = WebApplication.CreateBuilder(args).
-    AddAppSettings();
+var builder = WebApplication.CreateBuilder(args)
+    .AddSerilogLogger()
+    .AddAppSettings();
 
 var configuration = builder.Configuration;
 

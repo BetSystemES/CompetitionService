@@ -16,13 +16,13 @@ namespace CompetitionService.Grpc.Infrastructure.Validators
         /// </summary>
         public CompetitionBaseValidator()
         {
-            RuleForEach(x => x.CoefficientGroups)
-                .Where(x => x is not null)
-                .SetValidator(new CoefficientGroupValidator());
+            //RuleForEach(x => x.CoefficientGroups)
+            //    .Where(x => x is not null)
+            //    .SetValidator(new CoefficientGroupValidator());
 
-            RuleFor(x => x.Id)
-                .MustBeValidGuid()
-                .WithMessage($"{_typeName}.${nameof(CompetitionBase.Id)} is invalid");
+            //RuleFor(x => x.Id)
+            //    .MustBeValidGuid()
+            //    .WithMessage($"{_typeName}.${nameof(CompetitionBase.Id)} is invalid");
 
             RuleFor(x => x.StatusType)
                 .Must(x => x != CompetitionStatusType.Unspecified)

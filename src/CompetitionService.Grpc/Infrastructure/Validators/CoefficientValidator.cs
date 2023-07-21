@@ -19,9 +19,9 @@ namespace CompetitionService.Grpc.Infrastructure.Validators
         /// </summary>
         public CoefficientValidator()
         {
-            RuleFor(x => x.Id)
-                .MustBeValidGuid()
-                .WithMessage($"{_typeName}.${nameof(Coefficient.Id)} is invalid");
+            //RuleFor(x => x.Id)
+            //    .MustBeValidGuid()
+            //    .WithMessage($"{_typeName}.${nameof(Coefficient.Id)} is invalid");
 
             RuleFor(x => x.StatusType)
                 .Must(e => e != CoefficientStatusType.Unspecified)

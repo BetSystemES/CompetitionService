@@ -13,6 +13,8 @@ service BetService {
     returns (CreateBetRangeResponse);
   rpc UpdateBetStatuses (UpdateBetStatusesRequest)
     returns (UpdateBetStatusesResponse);
+  rpc UpdateBetStatus (UpdateBetStatusRequest)
+    returns (UpdateBetStatusResponse);
   rpc GetUsersBets (GetUsersBetsRequset)
     returns (GetUsersBetsResponse);
   rpc GetUserBetById (GetUserBetByIdRequset)
@@ -38,6 +40,13 @@ message UpdateBetStatusesRequest {
 }
 
 message UpdateBetStatusesResponse {
+}
+
+message UpdateBetStatusRequest {
+  BetStatusUpdateModel bet_status_update_model = 1;
+}
+
+message UpdateBetStatusResponse {
 }
 
 message GetUsersBetsRequset {

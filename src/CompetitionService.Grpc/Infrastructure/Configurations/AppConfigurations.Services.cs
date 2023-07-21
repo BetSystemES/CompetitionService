@@ -19,6 +19,7 @@ namespace CompetitionService.Grpc.Infrastructure.Configurations
             services.AddScoped<ICompetitionService<BusinessEntities.CompetitionDota2>, CompetitionDota2Service>();
             services.AddScoped<ICompetitionBaseService, CompetitionBaseService>();
             services.AddScoped<ICoefficientService, CoefficientService>();
+            services.AddScoped<ICoefficientGroupService, CoefficientGroupService>();
 
             return services;
         }

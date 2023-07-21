@@ -1,4 +1,6 @@
-﻿namespace CompetitionService.BusinessLogic.Contracts.Services
+﻿using CompetitionService.BusinessLogic.Entities;
+
+namespace CompetitionService.BusinessLogic.Contracts.Services
 {
     /// <summary>
     /// Implementation of coefficient service
@@ -13,5 +15,21 @@
         /// <param name="token">The token.</param>
         /// <returns>Rate value <seealso cref="double"/></returns>
         Task<double> DepositToCoefficientById(Guid id, double amount, CancellationToken token);
+
+        /// <summary>
+        /// Update specific coefficient.
+        /// </summary>
+        /// <param name="coefficient"></param>
+        /// <param name="token"></param>
+        /// <returns>Task</returns>
+        Task Update(Coefficient coefficient, CancellationToken token);
+
+        /// <summary>
+        /// Create specific coefficient.
+        /// </summary>
+        /// <param name="coefficient"></param>
+        /// <param name="token"></param>
+        /// <returns>Task</returns>
+        Task Create(Coefficient coefficient, CancellationToken token);
     }
 }

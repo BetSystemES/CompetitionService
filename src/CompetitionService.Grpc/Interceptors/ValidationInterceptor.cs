@@ -1,4 +1,5 @@
 ﻿using FluentValidation;
+using FluentValidation.Results;
 using Grpc.Core;
 using Grpc.Core.Interceptors;
 
@@ -123,8 +124,7 @@ namespace CompetitionService.Grpc.Interceptors
         /// <param name="request">The request.</param>
         /// <param name="validator">The validator.</param>
         /// <param name="token">The token.</param>
-        /// <exception cref="Grpc.Core.RpcException"></exception>
-        /// <exception cref="Grpc.Core.Status"></exception>
+        /// <exception cref="System.ComponentModel.DataAnnotations.ValidationException"></exception>
         private async Task ValidateRequest<TRequest>(
             TRequest request,
             IValidator<TRequest> validator,
@@ -135,11 +135,10 @@ namespace CompetitionService.Grpc.Interceptors
             {
                 var errors = validationResult
                     .Errors
-                    .Select(f => $"Property {f.PropertyName} failed validation. Error was {f.ErrorMessage}")
+                    .Select(f => new ValidationFailure(f.PropertyName, f.ErrorMessage))
                     .ToList();
 
-                var message = string.Join(Environment.NewLine, errors);
-                throw new RpcException(new Status(StatusCode.InvalidArgument, message));
+                throw new ValidationException(errors);
             }
         }
 
@@ -183,4 +182,3 @@ namespace CompetitionService.Grpc.Interceptors
         }
     }
 }
-

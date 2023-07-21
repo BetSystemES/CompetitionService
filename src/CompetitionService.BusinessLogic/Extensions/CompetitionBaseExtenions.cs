@@ -22,5 +22,10 @@ namespace CompetitionService.BusinessLogic.Extensions
 
             return betStatusUpdateModels;
         }
+
+        public static CoefficientStatus ToBetStatusUpdateModel(this Coefficient coefficient)
+        {
+            return new CoefficientStatus() { CoefficientId = coefficient.Id, OutcomeType = coefficient.OutcomeType };
+        }
     }
 }

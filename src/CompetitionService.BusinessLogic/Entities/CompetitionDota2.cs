@@ -16,6 +16,10 @@
 
         public Guid Team2Id { get; set; }
 
+        public string Team1Name { get; set; }
+
+        public string Team2Name { get; set; }
+
         public int Team1KillAmount { get; set; }
 
         public int Team2KillAmount { get; set; }

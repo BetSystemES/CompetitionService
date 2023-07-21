@@ -10,8 +10,8 @@ namespace CompetitionService.Grpc.Infrastructure.Validators.RequestValidators
     {
         public UpdateCompetitionDota2RequestValidator()
         {
-            RuleFor(x => x.CompetitionDota2)
-                .SetValidator(new CompetitionDota2Validtor());
+            //RuleFor(x => x.CompetitionDota2)
+            //    .SetValidator(new CompetitionDota2Validtor());
         }
     }
 }

@@ -18,12 +18,12 @@ namespace CompetitionService.Grpc.Infrastructure.Validators
         /// </summary>
         public CompetitionDota2Validtor()
         {
-            RuleFor(x => x.CompetitionBase)
-                .SetValidator(new CompetitionBaseValidator());
+            //RuleFor(x => x.CompetitionBase)
+            //    .SetValidator(new CompetitionBaseValidator());
 
-            RuleFor(x => x.Id)
-                .MustBeValidGuid()
-                .WithMessage($"{_typeName}.${nameof(CompetitionDota2.Id)} is invalid");
+            //RuleFor(x => x.Id)
+            //    .MustBeValidGuid()
+            //    .WithMessage($"{_typeName}.${nameof(CompetitionDota2.Id)} is invalid");
 
             RuleFor(x => x.Team1Id)
                 .MustBeValidGuid()

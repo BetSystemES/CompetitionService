@@ -14,6 +14,8 @@ namespace CompetitionService.DataAccess.Configurations
             builder.Property(x => x.CompetitionBaseId).IsRequired();
             builder.Property(x => x.Team1Id).IsRequired();
             builder.Property(x => x.Team2Id).IsRequired();
+            builder.Property(x => x.Team1Name).IsRequired();
+            builder.Property(x => x.Team2Name).IsRequired();
             builder.Property(x => x.Team1KillAmount).IsRequired();
             builder.Property(x => x.Team2KillAmount).IsRequired();
             builder.Property(x => x.TotalTime).IsRequired();

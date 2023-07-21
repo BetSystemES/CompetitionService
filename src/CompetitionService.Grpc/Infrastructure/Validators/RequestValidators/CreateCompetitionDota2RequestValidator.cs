@@ -12,8 +12,8 @@ namespace CompetitionService.Grpc.Infrastructure.Validators.RequestValidators
         /// </summary>
         public CreateCompetitionDota2RequestValidator()
         {
-            RuleFor(x => x.CompetitionDota2)
-                .SetValidator(new CompetitionDota2Validtor());
+            //RuleFor(x => x.Cre)
+            //    .SetValidator(new CompetitionDota2Validtor());
         }
     }
 }
